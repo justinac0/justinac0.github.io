@@ -1,0 +1,26 @@
+* {
+    font-family: monospace;
+    text-transform: lowercase;
+    text-align: left;
+    line-height: 2.5ch;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 5ch;
+}
+
+li {
+    list-style: none;
+    padding-left: 2ch;
+}
+
+a {
+    color: rgb(0, 4, 228);
+}
+
+#dark-theme {
+    color: #e8e8e8;
+    background-color: #0a0a0a;
+}
