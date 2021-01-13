@@ -1,5 +1,12 @@
+/* 000000 -- black */
+/* fffff1 -- white */
+
+/* 1dffc7 -- aqua */
+/* 2ef747 -- green */
+/* 2ef747 -- blue */
+
 * {
-    font-family: monospace;
+    font-family: 'Ubuntu';
     text-transform: lowercase;
     text-align: left;
     line-height: 2.5ch;
@@ -7,20 +14,55 @@
     padding: 0;
 }
 
+header h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
 body {
+    background-color: #1d1d1d;
+    color: #fffff1;
+
+    text-align: center;
     padding: 5ch;
 }
 
-li {
-    list-style: none;
-    padding-left: 2ch;
+.txt-aqua {
+    color: #1cfebe;
 }
 
-a {
-    color: rgb(0, 4, 228);
+.txt-green {
+    color: #2ef747;
 }
 
-#dark-theme {
-    color: #e8e8e8;
-    background-color: #0a0a0a;
+.txt-blue {
+    color: #000dbb;
+}
+
+.blog {
+    border: 1px solid #333;
+    padding: 4ch;
+    margin: 2ch;
+    width: 64ch;
+
+    position: relative;
+    display: inline-block;
+    justify-content: center;
+}
+
+.blog .blog-title {
+
+}
+
+.blog .blog-short {
+
+}
+
+.blog .blog-btn-redirect {
+    text-decoration: none;
+    color: #2ef747;
+}
+
+code {
+    justify-content: left;
 }
