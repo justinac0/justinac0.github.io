@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Raylib Raycaster",
+        "description": "Written in C with the raylib library, this project demonstrates how raycasting can be used to draw a basic 3D scene.",
+        "imgSrc": "/raycaster.gif",
+        "github": "https://github.com/justinac0/raylib-raycaster"
+    },
+    {
+        "title": "OpenGL 3D Rendering",
+        "description": "",
+        "imgSrc": "/kevin.png",
+        "github": "https://github.com/justinac0/kevengine"
+    },
+    {
+        "title": "Raytracing Weekend",
+        "description": "",
+        "imgSrc": "/pytracer.png",
+        "github": "https://github.com/justinac0/pytracer"
+    },
+    {
+        "title": "Shady",
+        "description": "",
+        "imgSrc": "/shady.png",
+        "github": "https://github.com/justinac0/shady"
+    }
+]
