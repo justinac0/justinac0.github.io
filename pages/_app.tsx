@@ -4,12 +4,12 @@ import { Box, ChakraProvider, extendTheme } from "@chakra-ui/react"
 
 import NavBar from '@/components/navbar'
 
-const theme = {
+const theme = extendTheme({
   config: {
     initialColorMode: "dark",
     useSystemColorMode: true,
   },
-};
+});
 
 function App({ Component, pageProps }: AppProps) {
   return (
