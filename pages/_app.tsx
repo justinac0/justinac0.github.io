@@ -1,8 +1,7 @@
 import type { AppProps } from 'next/app'
 
-import { Box, ChakraProvider, Container } from "@chakra-ui/react"
+import { Box, ChakraProvider } from "@chakra-ui/react"
 
-import 'styles/global-style.css'
 import NavBar from '@/components/navbar'
 
 function App({ Component, pageProps }: AppProps) {
