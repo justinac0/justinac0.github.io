@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
   }
 }
 
-const Blogs: FC<InferGetStaticPropsType<typeof getStaticProps>>  = ({  posts, poop  }) => {
+const Blogs: FC<InferGetStaticPropsType<typeof getStaticProps>>  = ({  posts  }) => {
 
   return (
     <>
