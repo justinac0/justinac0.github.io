@@ -1,5 +1,5 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { Heading, SimpleGrid, Box } from '@chakra-ui/layout'
+import { Heading, SimpleGrid } from '@chakra-ui/layout'
 import { FC } from 'react'
 
 import ProjectCard from '@components/project-card'
