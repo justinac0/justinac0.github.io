@@ -1,13 +1,28 @@
-import type { NextPage } from 'next'
+import type { InferGetStaticPropsType } from 'next'
+import { get_posts } from "@/lib/parse_md"
+import { FC } from 'react'
 
-import { Heading, Box } from '@chakra-ui/layout'
-import { Image} from "@chakra-ui/react"
+import { Heading } from '@chakra-ui/layout'
 
-const Blogs: NextPage = () => {
+export const getStaticProps = async () => {
+  const posts = await get_posts()
+
+  return {
+      props: {
+        posts
+      }
+  }
+}
+
+const Blogs: FC<InferGetStaticPropsType<typeof getStaticProps>>  = ({  posts  }) => {
+
   return (
     <>
       <Heading mb={2}>BLOGS</Heading>
-      <p>coming soon....</p>
+
+      {posts?.map((post) => {
+        <Heading>{post}</Heading>
+      })}
     </>
   )
 }
