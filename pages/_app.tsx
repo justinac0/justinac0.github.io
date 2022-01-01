@@ -17,7 +17,7 @@ const styles = {
       "a": {
         "color": "blue.400",
         "text-decoration": "underline"
-      }
+      },
     },
   },
 };

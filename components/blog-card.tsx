@@ -14,11 +14,11 @@ const BlogCard: React.FC<Post> = (data) => {
     return (
         <Box mb={5} borderWidth={1} bg={title_color} borderColor={title_color} borderStyle={"solid"} boxShadow={"dark-lg"}>
             <HStack p={4}>
-                <Heading size="md">{data.heading}</Heading>
+                <Heading size="md">{data.published ? "" : "[DRAFT] "}{data.heading}</Heading>
                 <Spacer/>
                 <Heading size="sm" color={'gray.400'}>{data.date}</Heading>
             </HStack>
-            <Box p={'1.5ch'} bg={'gray.900'}>
+            <Box p={'1.5ch'} bg={'gray.800'}>
                 <Text pt={3}>{data.desc}</Text>
                 <Text mb={4} color={"gray.400"}>{data.preview}</Text>
                 <NextLink href={'/blogs/' + data.filename} passHref><Link fontWeight={"bold"} color={"blue.400"}>Read More</Link></NextLink>
