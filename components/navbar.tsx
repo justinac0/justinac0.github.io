@@ -14,7 +14,7 @@ const NavBar: React.FC = ({ children, ...props}) => {
         <Container p={2} maxW="container.md" position="sticky" top="0" w="100%" m="0 auto" bg={"gray.800"}{...props}>
             <HStack spacing={4}>
                 <Box>
-                    <Avatar size="md" name="Justin Chappell" src="/spaceman.png"></Avatar>
+                    <Avatar size="md" name="Justin Chappell" src="/spaceman.webp"></Avatar>
                 </Box>
                 <Box>
                 <Heading size="md" p={1} textTransform={'uppercase'}>Justin Chappell</Heading>
