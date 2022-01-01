@@ -1,8 +1,11 @@
 import type { NextPage } from 'next'
-
 import {
   Heading,
   Text,
+} from "@chakra-ui/react"
+
+import {
+  Link,
 } from "@chakra-ui/react"
 
 const IndexPage: NextPage = () => {
@@ -10,13 +13,17 @@ const IndexPage: NextPage = () => {
     <>
       <Heading mb={2} id="about">ABOUT</Heading>
       <Text>
-        {/* get this from some file probably */}
-        Hello! My name is Justin, I'm a Software Developer based in Australia. I{"'"}m currently studying
-        Computer Science and Physics at university. My interests are graphics programming, visual design and music. You can view my projects at the showcase link above.
-        {/* Also keep an eye out for blogs, I{"'"}ll be posting soon. If you would like to contact me with any questions, suggestions or feedback you can send me a message <Link color="yellow.400" textDecoration="underline">HERE!</Link>  */}
+        Hello! My name is Justin, I'm a Software Developer based in Australia. I'm an undergrad in IT/Science (majoring in Computer Science and Physics respectively).
+        This is my central public facing archive where projects, blogs and updates will be posted for later viewing for those who may have similar interests, and future employers.
       </Text>
+      <br/>
+      <Text>
+        If you have any queries feel free to send me an <u><b><Link as={'a'} href="mailto:contact.justinac@gmail.com">email!</Link></b></u>
+        </Text>
+      <br/>
+      <Text>Thanks for dropping by!</Text>
     </>
   )
 }
 
-export default IndexPage
+export default IndexPage;

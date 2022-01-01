@@ -9,12 +9,12 @@ import {
 
 import NextLink from "next/link"
 
-const NavBar: React.FC = () => {
+const NavBar: React.FC = ({ children, ...props}) => {
     return (
-        <Container p={2} maxW="container.md" position="sticky" top="0" bg={"gray.800"} w="100%" m="0 auto">
+        <Container p={2} maxW="container.md" position="sticky" top="0" w="100%" m="0 auto" bg={"gray.800"}{...props}>
             <HStack spacing={4}>
                 <Box>
-                    <Avatar size="md" name="Justin Chappell" src="/about-profile.jpg"></Avatar>
+                    <Avatar size="md" name="Justin Chappell" src="/spaceman.png"></Avatar>
                 </Box>
                 <Box>
                 <Heading size="md" p={1} textTransform={'uppercase'}>Justin Chappell</Heading>
