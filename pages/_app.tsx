@@ -29,7 +29,7 @@ function App({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={theme} resetCSS={true}>
       <ColorModeScript initialColorMode={theme.config.initialColorMode}></ColorModeScript>
       <NavBar/>
-      <Box as="main" maxWidth="md" m="0 auto">
+      <Box as="main" maxWidth="md" m="0 auto" p={4}>
         <Component {...pageProps} />
       </Box>
     </ChakraProvider>
