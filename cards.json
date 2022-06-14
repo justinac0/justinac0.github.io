@@ -23,9 +23,15 @@
         "github": "https://github.com/justinac0/shady"
     },
     {
-        "title": "LibraryDB",
+        "title": "Basic Library App (LibraryDB)",
         "description": "Library managment webapp. Flask + ReactJS.",
         "imgSrc": "/books.png",
         "github": "https://github.com/justinac0/LibraryDB"
+    },
+    {
+        "title": "TodoApp (Flask-Todo)",
+        "description": "Flask only todo app",
+        "imgSrc": "/flask-todo.png",
+        "github": "https://github.com/justinac0/flask-todo"
     }
 ]
