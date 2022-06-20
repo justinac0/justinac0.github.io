@@ -23,7 +23,7 @@
         "github": "https://github.com/justinac0/shady"
     },
     {
-        "title": "Basic Library App (LibraryDB)",
+        "title": "LibraryDB",
         "description": "Library managment webapp. Flask + ReactJS.",
         "imgSrc": "/books.png",
         "github": "https://github.com/justinac0/LibraryDB"
