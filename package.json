@@ -1,5 +1,6 @@
 {
-  "name": "justinac0-hub",
+  "name": "profile-template",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,26 +10,17 @@
     "export": "next export"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^1.0.17",
-    "@chakra-ui/react": "^1.6.12",
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
-    "framer-motion": "^4.1.17",
-    "gray-matter": "^4.0.3",
-    "next": "^12.0.7",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "remark": "^14.0.1",
-    "remark-gfm": "^3.0.1",
-    "remark-html": "^15.0.0",
-    "remark-prism": "^1.3.6",
-    "three": "^0.134.0"
+    "bootstrap": "^5.1.3",
+    "next": "12.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@types/node": "16.11.6",
-    "@types/react": "17.0.34",
-    "eslint": "7.32.0",
-    "eslint-config-next": "12.0.3",
-    "typescript": "4.4.4"
+    "@types/node": "18.0.0",
+    "@types/react": "18.0.14",
+    "@types/react-dom": "18.0.5",
+    "eslint": "8.18.0",
+    "eslint-config-next": "12.1.6",
+    "typescript": "4.7.4"
   }
 }

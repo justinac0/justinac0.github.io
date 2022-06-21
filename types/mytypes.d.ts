@@ -4,8 +4,3 @@ export type Card = {
     imgSrc?: string;
     github?: string;
 }
-
-export type Blog = {
-    meta: string;
-    body: string;
-};
