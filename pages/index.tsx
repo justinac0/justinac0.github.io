@@ -15,6 +15,13 @@ const Home: NextPage = () => {
       <Link href="http://github.com/justinac0">github</Link>
       <br />
       <Link href="mailto:contact.justinac@gmail.com">email</Link>
+      <br />
+      <br />
+      <h3>Resume</h3>
+      <Link href="/resume">view online</Link>
+      {/* <hr /> */}
+      {/* <br />
+      <Link href="">download pdf</Link> */}
     </>
   );
 };

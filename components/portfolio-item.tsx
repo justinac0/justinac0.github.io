@@ -2,14 +2,14 @@ import Link from "next/link";
 
 import type { Card } from "@/types/mytypes";
 
-const PortfolioItem: React.FC<Card> = ({
+export const PortfolioItem: React.FC<Card> = ({
   title,
   description,
   imgSrc,
   github,
 }) => {
   return (
-    <div className="p-5 mb-4 shadow card2 container-fluid">
+    <div className="p-3 mb-4 shadow card2 container-fluid">
       <div className="row">
         <div className="col-lg">
           <h2>{title}</h2>
@@ -29,5 +29,3 @@ const PortfolioItem: React.FC<Card> = ({
     </div>
   );
 };
-
-export default PortfolioItem;

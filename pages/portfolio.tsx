@@ -3,7 +3,7 @@ import { GetStaticProps } from "next";
 
 import type { Card } from "@/types/mytypes";
 import CARDS from "@/cards.json";
-import PortfolioItem from "@/components/portfolio-item";
+import { PortfolioItem } from "@/components/portfolio-item";
 import { FC } from "react";
 
 export const getStaticProps: GetStaticProps = () => {

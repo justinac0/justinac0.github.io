@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const SideBar = () => {
+export const SideBar = () => {
   return (
     <div className="col-md-5 p-5 shadow sidebar">
       <span className="stick-title">
@@ -12,7 +12,6 @@ const SideBar = () => {
           className="btn-group"
           role="group"
           aria-label="Basic mixed styles example"
-          style={{ width: "100%" }}
         >
           <Link href="/">
             <p className="btn-danger btn">About</p>
@@ -28,5 +27,3 @@ const SideBar = () => {
     </div>
   );
 };
-
-export default SideBar;
