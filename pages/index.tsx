@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import { NextPage } from "next";
 import Link from "next/link";
 
 const Home: NextPage = () => {
@@ -11,14 +11,22 @@ const Home: NextPage = () => {
         learning on this website.
       </p>
       <hr />
-      <h2>Links</h2>
-      <Link href="http://github.com/justinac0">github</Link>
-      <br />
-      <Link href="mailto:contact.justinac@gmail.com">email</Link>
-      <br />
-      <br />
-      <h3>Resume</h3>
-      <Link href="/resume">view online</Link>
+      <section>
+        <h2>Links</h2>
+        <li>
+          <Link href="http://github.com/justinac0">github</Link>
+        </li>
+        <li>
+          <Link href="mailto:contact.justinac@gmail.com">email</Link>
+        </li>
+      </section>
+      <hr />
+      <section>
+        <h3>Resume</h3>
+        <li>
+          <Link href="/resume">view online</Link>
+        </li>
+      </section>
       {/* <hr /> */}
       {/* <br />
       <Link href="">download pdf</Link> */}
