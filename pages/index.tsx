@@ -1,29 +1,22 @@
-import type { NextPage } from 'next'
-import {
-  Heading,
-  Text,
-} from "@chakra-ui/react"
+import type { NextPage } from "next";
+import Link from "next/link";
 
-import {
-  Link,
-} from "@chakra-ui/react"
-
-const IndexPage: NextPage = () => {
+const Home: NextPage = () => {
   return (
     <>
-      <Heading mb={2} id="about">ABOUT</Heading>
-      <Text>
-        Hello! My name is Justin, I'm a Software Developer based in Australia. I'm an undergrad in IT/Science (majoring in Computer Science and Physics respectively).
-        This is my central public facing archive where projects, blogs and updates will be posted for later viewing for those who may have similar interests, and future employers.
-      </Text>
-      <br/>
-      <Text>
-        If you have any queries feel free to send me an <u><b><Link as={'a'} href="mailto:contact.justinac@gmail.com">email!</Link></b></u>
-        </Text>
-      <br/>
-      <Text>Thanks for dropping by!</Text>
+      <h1>Welcome to my website!</h1>
+      <p>Hello! My name is Justin,</p>
+      <p>
+        I archive some of my personal projects and blog about things I am
+        learning on this website.
+      </p>
+      <hr />
+      <h2>Links</h2>
+      <Link href="http://github.com/justinac0">github</Link>
+      <br />
+      <Link href="mailto:contact.justinac@gmail.com">email</Link>
     </>
-  )
-}
+  );
+};
 
-export default IndexPage;
+export default Home;

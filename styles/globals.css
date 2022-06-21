@@ -1,0 +1,70 @@
+html,
+body,*{
+    margin: 0;
+    padding: 0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: #4a4a4a;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #1d1d1d;
+    font-family: Segoe UI;
+}
+
+a {
+    color: #3dc1d3;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #63cdda;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+.sidebar {
+    background-color:white;
+    max-width: 100%;
+}
+
+.sidebar {
+    min-height: 100vh;
+    max-width: 36ch;
+    width: 36ch;
+    border: 0;
+    border-right: 1px;
+    border-color: #afafaf;
+    border-style: solid;
+}
+
+.stick-title {
+    position: sticky;
+    top: 40vh;
+}
+
+@media (max-width: 768px) {
+    .stick-title {
+        top: 0;
+    }
+
+    .sidebar {
+        min-height: 64px;
+        max-width: 100%;
+        width: 100%;
+        border: 0;
+        border-bottom: 1px;
+        border-color: #afafaf;
+        border-style: solid;
+    }
+}
+
+.card2 {
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.title {
+}
