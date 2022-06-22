@@ -1,9 +1,7 @@
 .sidebar {
+    z-index: 10;
     background-color:white;
     max-width: 100%;
-}
-
-.sidebar {
     min-height: 100vh;
     max-width: 42ch;
     width: auto;
