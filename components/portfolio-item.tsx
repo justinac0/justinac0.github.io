@@ -11,11 +11,11 @@ export const PortfolioItem: React.FC<Card> = ({
   return (
     <div className="p-3 mb-4 shadow card2 container-fluid">
       <div className="row">
-        <div className="col-lg">
+        <div className="col-md">
           <h2>{title}</h2>
           <p>{description}</p>
         </div>
-        <div className="col-lg text-center">
+        <div className="col-md text-center">
           <img
             className="img-fluid rounded mb-4"
             src={imgSrc}

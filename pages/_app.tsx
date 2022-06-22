@@ -1,14 +1,23 @@
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "../styles/globals.css";
 
 import Head from "next/head";
 
 import type { AppProps } from "next/app";
 import { SideBar } from "@/components/sidebar";
+import { TopBar } from "@/components/topbar";
 import { useRouter } from "next/router";
+
+import { useMediaQuery } from "react-responsive";
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+
+  const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
+  const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
 
   return (
     <>
@@ -19,14 +28,8 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <main className="container-fluid">
         <section className="row">
-          <SideBar />
-          <div
-            className="col-md p-4"
-            style={{
-              margin: "0 0 auto",
-              maxWidth: "45rem",
-            }}
-          >
+          {isTabletOrMobile ? <TopBar /> : <SideBar />}
+          <div className="col-md p-4 focused-content">
             <p
               style={{
                 color: "#b0b0b0",

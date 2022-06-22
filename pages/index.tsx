@@ -26,10 +26,12 @@ const Home: NextPage = () => {
         <li>
           <Link href="/resume">view online</Link>
         </li>
+        <li>
+          <s>
+            <Link href="">download pdf</Link>
+          </s>
+        </li>
       </section>
-      {/* <hr /> */}
-      {/* <br />
-      <Link href="">download pdf</Link> */}
     </>
   );
 };
