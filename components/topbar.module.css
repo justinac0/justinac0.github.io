@@ -1,0 +1,49 @@
+.topbar {
+    position: sticky;
+    top: 0;
+    background-color: white;
+
+    border: 0;
+    border-bottom: 1px;
+    border-color: var(--outline-gray);
+    border-style: solid;
+    padding-top: 1.5ch;
+    padding-bottom: 1.5ch;
+}
+
+.hamburger {
+    border: 1px solid var(--outline-gray);
+    border-radius: 5px;
+    width: 48px;
+    height: 48px;
+    background-color: var(--white);
+    color: black;
+}
+
+.hamburger:hover {
+    background-color: whitesmoke;
+}
+
+.centerlogo {
+    display: flex;
+    align-items: center;
+    margin-left: 1ch;
+}
+
+.menu > ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    margin-top: 1ch;
+    /* border: 1px solid var(--outline-gray); */
+}
+
+.menu > ul > * {
+    text-decoration: none;
+}
+
+.menubutton {
+    width: 100%;
+    border: 1px solid var(--outline-gray);
+    margin: 0;
+}

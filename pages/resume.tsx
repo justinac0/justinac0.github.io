@@ -19,8 +19,7 @@ const ResumeContent = () => {
         <h2>Extra Curricular</h2>
         <nav>
           <li>
-            <Link href="">
-              {/* "https://www.instagram.com/shotonnokia800tough/"> */}
+            <Link href="https://www.instagram.com/shotonnokia800tough/">
               Photography.
             </Link>
           </li>
@@ -36,32 +35,34 @@ const ResumeContent = () => {
 
       <section>
         <h2>Contact Info</h2>
-        <table className="shadow">
-          <tr>
-            <th>Method</th>
-            <th></th>
-          </tr>
 
+        <table className="shadow smancytable">
           <tr>
             <td>email</td>
             <td>
-              <Link href="">
-                {/* "mailto:contact.justinac@gmail.com"> */}
+              <Link href="mailto:contact.justinac@gmail.com">
                 contact.justinac@gmail.com
               </Link>
             </td>
           </tr>
+        </table>
 
+        <br />
+
+        <table className="shadow smancytable">
           <tr>
             <td>linkedin</td>
             <td>
-              <Link href="">
-                {/* "https://www.linkedin.com/in/justinac0/"> */}
+              <Link href="https://www.linkedin.com/in/justinac0/">
                 justinac0
               </Link>
             </td>
           </tr>
+        </table>
 
+        <br />
+
+        <table className="shadow smancytable">
           <tr>
             <td>mobile phone</td>
             <td>request through email</td>
@@ -80,11 +81,7 @@ const Resume = () => {
       <Link href="/">
         <p className="link">{"< "}back</p>
       </Link>
-      <h1>Under Construction...</h1>
-      <s>
-        <h1>Resume</h1>
-        <ResumeContent />
-      </s>
+      <ResumeContent />
     </>
   );
 };
