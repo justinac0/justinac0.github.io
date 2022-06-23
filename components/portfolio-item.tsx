@@ -17,15 +17,17 @@ export const PortfolioItem: React.FC<Card> = ({
         </div>
         <div className="col-md text-center">
           <img
-            className="img-fluid rounded mb-4"
+            className="img-fluid rounded"
             src={imgSrc}
             alt="image of portfolio item..."
           />
         </div>
       </div>
-      <div className="row">
-        {github && <Link href={github}>view on github</Link>}
-      </div>
+      {github && (
+        <span className="row pt-2">
+          <Link href={github}>view on github</Link>
+        </span>
+      )}
     </div>
   );
 };

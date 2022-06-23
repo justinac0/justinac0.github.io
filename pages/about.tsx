@@ -1,7 +1,12 @@
 const About = () => {
   return (
     <>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, nam.</p>
+      <p>
+        Hello! My name is Justin, I'm a Software Developer based in Australia. I
+        study Computer Science and Physics at QUT. I have been programming for a
+        little over 5 years now.
+      </p>
+      <br />
     </>
   );
 };

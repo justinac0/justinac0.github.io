@@ -10,19 +10,10 @@ const Home: NextPage = () => {
         I archive some of my personal projects and blog about things I am
         learning on this website.
       </p>
+
       <hr />
       <section>
-        <h2>Links</h2>
-        <li>
-          <Link href="http://github.com/justinac0">github</Link>
-        </li>
-        <li>
-          <Link href="mailto:contact.justinac@gmail.com">email</Link>
-        </li>
-      </section>
-      <hr />
-      <section>
-        <h3>Resume</h3>
+        <h2>Resume</h2>
         <li>
           <Link href="/resume">view online</Link>
         </li>
