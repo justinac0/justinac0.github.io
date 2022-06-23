@@ -14,10 +14,7 @@ import { useMediaQuery } from "react-responsive";
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
-  const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
-  const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
     <>
