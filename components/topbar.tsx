@@ -22,7 +22,6 @@ export const TopBar = () => {
           className="col"
           style={{
             textAlign: "right",
-            marginRight: "1ch",
           }}
         >
           <h4 className="m-0">Justin Chappell</h4>
@@ -30,8 +29,9 @@ export const TopBar = () => {
       </div>
 
       {toggled ? (
-        <nav className={styles.menu}>
-          <ul>
+        <>
+          <hr />
+          <div className={"btn-group" + " " + styles.menu}>
             <Link href="/">
               <i
                 className={
@@ -39,31 +39,25 @@ export const TopBar = () => {
                 }
               ></i>
             </Link>
-          </ul>
-          <ul>
             <Link href="/about">
               <p className={"btn btn-danger" + " " + styles.menubutton}>
                 About
               </p>
             </Link>
-          </ul>
 
-          <ul>
             <Link href="/portfolio">
               <p className={"btn btn-success" + " " + styles.menubutton}>
                 Portfolio
               </p>
             </Link>
-          </ul>
 
-          <ul className="">
             <Link href="/blogs">
               <p className={"btn btn-primary" + " " + styles.menubutton}>
                 Blogs
               </p>
             </Link>
-          </ul>
-        </nav>
+          </div>
+        </>
       ) : (
         <></>
       )}
