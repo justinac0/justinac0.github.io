@@ -28,15 +28,17 @@
 .centerlogo {
     display: flex;
     align-items: center;
-    margin-left: 1ch;
+}
+
+.menu::-webkit-scrollbar {
+    display: none;
 }
 
 .menu > ul {
-    display: block;
+    display: inline-block;
     margin: 0;
     padding: 0;
     margin-top: 1ch;
-    /* border: 1px solid var(--outline-gray); */
 }
 
 .menu > ul > * {
@@ -45,6 +47,5 @@
 
 .menubutton {
     width: 100%;
-    border: 1px solid var(--outline-gray);
     margin: 0;
 }
