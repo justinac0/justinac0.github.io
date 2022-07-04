@@ -16,13 +16,13 @@ export const SideBar = () => {
               <i className="bi bi-house-fill"></i>
             </p>
           </Link>
-          <Link href="/about">
+          <Link href="/">
             <p className="btn-danger btn">About</p>
           </Link>
-          <Link href="/portfolio">
+          <Link href="#portfolio">
             <p className="btn-success btn">Portfolio</p>
           </Link>
-          <Link href="/blogs">
+          <Link href="#blogs">
             <p className="btn-primary btn">Blogs</p>
           </Link>
         </div>

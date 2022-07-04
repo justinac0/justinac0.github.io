@@ -34,14 +34,14 @@
     display: none;
 }
 
-.menu > ul {
+.menu>ul {
     display: inline-block;
     margin: 0;
     padding: 0;
     margin-top: 1ch;
 }
 
-.menu > ul > * {
+.menu>ul>* {
     text-decoration: none;
 }
 
