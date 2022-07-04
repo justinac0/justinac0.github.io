@@ -39,19 +39,19 @@ export const TopBar = () => {
                 }
               ></i>
             </Link>
-            <Link href="/about">
+            <Link href="/">
               <p className={"btn btn-danger" + " " + styles.menubutton}>
                 About
               </p>
             </Link>
 
-            <Link href="/portfolio">
+            <Link href="#portfolio">
               <p className={"btn btn-success" + " " + styles.menubutton}>
                 Portfolio
               </p>
             </Link>
 
-            <Link href="/blogs">
+            <Link href="#blogs">
               <p className={"btn btn-primary" + " " + styles.menubutton}>
                 Blogs
               </p>

@@ -17,7 +17,7 @@ function App({ Component, pageProps }: AppProps) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
-    <>
+    <div>
       <Head>
         <title>Justin Chappell | Website</title>
         <link rel="icon" type="image/x-icon" href="/dp.png" />
@@ -27,18 +27,11 @@ function App({ Component, pageProps }: AppProps) {
         <section className="row">
           {isTabletOrMobile ? <TopBar /> : <SideBar />}
           <div className="col-md p-4 focused-content">
-            <p
-              style={{
-                color: "#b0b0b0",
-              }}
-            >
-              {router.asPath}
-            </p>
             <Component {...pageProps} />
           </div>
         </section>
       </main>
-    </>
+    </div>
   );
 }
 

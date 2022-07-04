@@ -1,9 +1,10 @@
 const Blogs = () => {
   return (
-    <>
-      <h1>Coming Soon...</h1>
-      <img className="img-fluid" src="/tesseract.png" alt="" />
-    </>
+    <div id="blogs">
+      <h2>Blogs</h2>
+      <p>coming soon...</p>
+      {/* <img className="img-fluid" src="/tesseract.png" alt="" /> */}
+    </div>
   );
 };
 

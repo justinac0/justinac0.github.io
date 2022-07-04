@@ -12,7 +12,7 @@ export const PortfolioItem: React.FC<Card> = ({
     <div className="p-3 mb-4 shadow card2 container-fluid">
       <div className="row">
         <div className="col-md">
-          <h2>{title}</h2>
+          <h3>{title}</h3>
           <p>{description}</p>
         </div>
         <div className="col-md text-center">

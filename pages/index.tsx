@@ -1,29 +1,30 @@
 import { NextPage } from "next";
 import Link from "next/link";
 
+import About from "./about";
+import Blogs from "./blogs";
+import Portfolio from "./portfolio";
+
 const Home: NextPage = () => {
   return (
-    <>
-      <h1>Welcome to my website!</h1>
-      <p>Hello! My name is Justin,</p>
-      <p>
-        I archive some of my personal projects and blog about things I am
-        learning on this website.
-      </p>
-
-      <hr />
-      <section>
-        <h2>Resume</h2>
-        <li>
-          <Link href="/resume">view online</Link>
-        </li>
-        <li>
-          <s>
-            <Link href="">download pdf</Link>
-          </s>
-        </li>
-      </section>
-    </>
+    <div>
+      <About/>
+      {/* <div className="container-fluid">
+        <div className="row">
+          <div className="col-md">
+            <img className="img-fluid" src="/dp.png" alt="picture of me" style={{border: "1px solid var(--outline-gray)"}} />
+          </div>
+          <div className="col-md"> */}
+          {/* </div> */}
+        {/* </div> */}
+      {/* </div> */}
+      {/* <Link href="/resume">view resume</Link> */}
+      <hr/>
+      <Portfolio />
+      
+      <hr/>
+      <Blogs />
+    </div>
   );
 };
 
