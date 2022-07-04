@@ -5,7 +5,7 @@ import Link from "next/link";
 export const SideBar = () => {
   return (
     <div className={"col-md-5 p-5 shadow" + " " + styles.sidebar}>
-      <span className={"stick-title" + " " + styles.sidebartitle}>
+      <div className={styles.sidebartitle}>
         <h1 className="title">Justin Chappell</h1>
         <p className="d-none d-md-flex">
           Currently studying Computer Science and Physics at QUT.
@@ -26,7 +26,7 @@ export const SideBar = () => {
             <p className="btn-primary btn">Blogs</p>
           </Link>
         </div>
-      </span>
+      </div>
     </div>
   );
 };
