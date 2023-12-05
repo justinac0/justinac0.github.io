@@ -36,7 +36,7 @@ export default function Portfolio() {
                 <div className="lg:flex lg:items-start md:flex md:items-start">
                     <span className="grid grid-cols-1 m-2 gap-4">
                         {portfolioItems.map((contents) => (
-                            <PortfolioItem {...contents} />
+                            <PortfolioItem key={contents.title} {...contents} />
                         ))}
                     </span>
                 </div>
