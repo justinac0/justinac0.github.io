@@ -27,7 +27,7 @@ export default function Portfolio() {
     const portfolioItems = useLoaderData<typeof loader>();
 
     return (
-        <DefaultPageLayout title="Justin Chappell - Portfolio" content={
+        <DefaultPageLayout content={
             <>
                 <h1 className="text-3xl">Portfolio</h1>
 

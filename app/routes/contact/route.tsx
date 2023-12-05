@@ -2,7 +2,7 @@ import DefaultPageLayout from "~/components/DefaultPageLayout"
 
 export default function Contact() {
     return (
-        <DefaultPageLayout title="Justin Chappell - Contact" content={
+        <DefaultPageLayout content={
             <>
                 <h1 className="text-3xl">Contact</h1>
                 <br />
