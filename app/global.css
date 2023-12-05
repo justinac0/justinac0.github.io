@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+
+@layer base {
+  * {
+    font-family: 'Lora', serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #191717;
+    color: #F1EFEF;
+    min-height: 100vh;
+  }
+  
+  h1,h2,h3,h4 {
+    font-family: "Nunito", serif;
+  }
+  
+  p,h5,h6 { 
+    font-family: 'Lora', serif;
+  }  
+}
+
+.profile-card {
+  max-width: 360px;
+}
+
+.hide-on-small{
+  display:block;
+}
+
+.go-back {
+  background-color: #F05454;
+  color: white;
+  font-weight: bold;
+  padding: 1.5ch;
+}
+
+@media screen and (max-height: 600px) {
+  .hide-on-small{
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  :hover.animate-wobble {
+    animation: wobble 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    cursor: pointer;
+  }
+  
+  @keyframes wobble {
+    0% {
+      scale: 1.0;
+    }
+    50% {
+      scale: 1.025;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+}
