@@ -33,7 +33,12 @@ jobs:
 
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: yarn export
+
+      - name: Start server and mirror it with wget
+        run: |
+              yarn start &
+              sleep 10 &&
+              wget --mirror http://localhost:3000 -P out --no-host-directories --page-requisites --adjust-extension
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
