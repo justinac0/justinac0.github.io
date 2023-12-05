@@ -2,7 +2,7 @@ import DefaultPageLayout from "~/components/DefaultPageLayout"
 
 export default function About() {
     return (
-        <DefaultPageLayout title="Justin Chappell - About" content={
+        <DefaultPageLayout content={
             <>
                 <h1 className="text-3xl">About</h1>
                 <p>Hello! my name is Justin and I am currently an undergraduate student at QUT, undertaking a double bachelor of Science and IT {"("}majoring in physics and computer science respectively{")"}.</p>
