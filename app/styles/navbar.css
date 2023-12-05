@@ -1,0 +1,10 @@
+.navbar {
+    width: 100vw;
+    position: fixed;
+    top: 0;
+}
+
+.navbar>ul>* {
+    padding: 1.5ch;
+    text-transform: capitalize;
+}
