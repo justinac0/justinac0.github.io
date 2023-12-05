@@ -26,6 +26,14 @@ export default function Portfolio() {
     // TODO: to fetch from somewhere else eventually
     const portfolioItems = useLoaderData<typeof loader>();
 
+    const leftGrid = portfolioItems.filter((element, index, _) => {
+        return (index % 2 === 0);
+    });
+
+    const rightGrid = portfolioItems.filter((element, index, _) => {
+        return (index % 2 === 1);
+    });
+
     return (
         <DefaultPageLayout content={
             <>
@@ -35,7 +43,12 @@ export default function Portfolio() {
 
                 <div className="lg:flex lg:items-start md:flex md:items-start">
                     <span className="grid grid-cols-1 m-2 gap-4">
-                        {portfolioItems.map((contents) => (
+                        {leftGrid.map((contents) => (
+                            <PortfolioItem key={contents.title} {...contents} />
+                        ))}
+                    </span>
+                    <span className="grid grid-cols-1 m-2 gap-4">
+                        {rightGrid.map((contents) => (
                             <PortfolioItem key={contents.title} {...contents} />
                         ))}
                     </span>
