@@ -21,13 +21,13 @@ export default function Portfolio() {
         { title: "Flask Todo App", description: "", image: "/portfolio/flask-todo.png" },
     ];
 
-    const gridA = portfolioItems.filter((element, index, array) => {
-        return (index % 2 === 0); // even
-    });
+    // const gridA = portfolioItems.filter((element, index, array) => {
+    //     return (index % 2 === 0); // even
+    // });
 
-    const gridB = portfolioItems.filter((element, index, array) => {
-        return (index % 2 === 1); // odd
-    });
+    // const gridB = portfolioItems.filter((element, index, array) => {
+    //     return (index % 2 === 1); // odd
+    // });
 
     return (
         <DefaultPageLayout title="Justin Chappell - Portfolio" content={
@@ -38,16 +38,19 @@ export default function Portfolio() {
 
                 <div className="lg:flex lg:items-start md:flex md:items-start">
                     <span className="grid grid-cols-1 m-2 gap-4">
-                        {gridA.map((contents) => (
+                        {/* {gridA.map((contents) => (
+                            <PortfolioItem {...contents} />
+                        ))} */}
+                        {portfolioItems.map((contents) => (
                             <PortfolioItem {...contents} />
                         ))}
                     </span>
 
-                    <span className="grid grid-cols-1 m-2 gap-4">
+                    {/* <span className="grid grid-cols-1 m-2 gap-4">
                         {gridB.map((contents) => (
                             <PortfolioItem {...contents} />
                         ))}
-                    </span>
+                    </span> */}
                 </div>
 
                 <br />
