@@ -1,4 +1,5 @@
 import GithubButton from "./GithubButton";
+import { Link } from "@remix-run/react";
 
 interface PortfolioItemParams {
     title: string;
@@ -12,11 +13,11 @@ export default function PortfolioItem({
     title, description, image, ghLink, tags
 }: PortfolioItemParams) {
     return (
-        <div className="portfolio-item shadow-md p-4">
+        <Link to={ghLink ? ghLink : "/"} target="_blank" className="portfolio-item shadow-md p-4">
             <h2 className="text-xl">{title}</h2>
             <p className="text-sm text-gray-300">{description}</p>
             <img className="portfolio-item-image" src={image} alt="" />
             {ghLink ? <GithubButton link={ghLink} /> : <></>}
-        </div>
+        </Link>
     );
 }
