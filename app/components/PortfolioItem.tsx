@@ -12,10 +12,12 @@ export default function PortfolioItem({
     title, description, image, ghLink, tags
 }: PortfolioItemParams) {
     return (
-        <Link to={ghLink ? ghLink : "/"} target="_blank" className="portfolio-item shadow-md p-4">
+        <div className="portfolio-item shadow-md p-4 mb-2 mr-2">
             <h2 className="text-xl">{title}</h2>
             <p className="text-sm text-gray-300">{description}</p>
             <img className="portfolio-item-image" src={image} alt="" />
-        </Link>
+            <br />
+            {ghLink && <a className="bg-blue-600 hover:bg-blue-500 p-2 rounded-md" href={ghLink} target="_blank">View on Github</a>}
+        </div>
     );
 }

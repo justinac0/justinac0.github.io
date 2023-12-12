@@ -4,7 +4,9 @@ export default function About() {
     return (
         <DefaultPageLayout content={
             <>
-                <h1 className="text-3xl">About</h1>
+                <h1 className="text-4xl text-center">About</h1>
+                <br />
+
                 <p>Hello! my name is Justin and I am currently an undergraduate student at QUT, undertaking a double bachelor of Science and IT {"("}majoring in physics and computer science respectively{")"}.</p>
                 <br />
                 <p>Always eagar to improve I spend my spare time creating software not always directly related to course content covered. Some of the projects I have worked on over the years

@@ -4,7 +4,9 @@ export default function Blogs() {
     return (
         <DefaultPageLayout content={
             <>
-                <h1 className="text-3xl">Blogs</h1>
+                <h1 className="text-4xl">Blogs</h1>
+                <br />
+
             </>
         }/>
     )
