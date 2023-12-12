@@ -42,7 +42,7 @@
   background-color: #F05454;
   color: white;
   font-weight: bold;
-  padding: 1.5ch;
+  padding: 1ch;
 }
 
 @media screen and (max-height: 600px) {
