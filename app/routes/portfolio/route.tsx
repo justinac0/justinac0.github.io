@@ -12,13 +12,14 @@ export const links: LinksFunction = () => [
 
 export const loader = async () => {
     return json([
-        { title: "Game of Life", description: "", image: "/portfolio/life.gif" },
-        { title: "Mandlebrot Renderer", description: "", image: "/portfolio/fractal.png" },
+        { title: "Game of Life", description: "", image: "/portfolio/life.gif", ghLink: "https://github.com/justinac0/raylib-game-of-life" },
+        { title: "Mandlebrot Renderer", description: "", image: "/portfolio/fractal.png", ghLink: "https://github.com/justinac0/raylib-fractals" },
         { title: "This Website!", description: "", image: "/portfolio/website.png" },
+        { title: "Basic Bible Study App", description: "", image: "/portfolio/bible.png", ghLink: "https://github.com/justinac0/bible-study-basic" },
         { title: "IoT Renderer", description: "", image: "/portfolio/cube.gif" },
-        { title: "Raycaster", description: "", image: "/portfolio/raycaster.gif" },
-        { title: "Shady (Shader Toy Clone)", description: "", image: "/portfolio/rtweekend_1.gif" },
-        { title: "Flask Todo App", description: "", image: "/portfolio/flask-todo.png" },
+        { title: "Raycaster", description: "", image: "/portfolio/raycaster.gif", ghLink: "https://github.com/justinac0/raylib-raycaster" },
+        { title: "Shady (Shader Toy Clone)", description: "", image: "/portfolio/rtweekend_1.gif", ghLink: "https://github.com/justinac0/shady" },
+        { title: "Flask Todo App", description: "", image: "/portfolio/flask-todo.png", ghLink: "https://github.com/justinac0/flask-todo" },
     ]);
 }
 
