@@ -3,7 +3,7 @@ import DefaultPageLayout from "~/components/DefaultPageLayout"
 export default function About() {
     return (
         <DefaultPageLayout content={
-            <>
+            <div className="center-content">
                 <h1 className="text-4xl text-center">About</h1>
                 <br />
                 <p>
@@ -25,7 +25,7 @@ export default function About() {
                 <p>
                     If you wish to contact me, feel free to through the contact page.
                 </p>
-            </>
+            </div>
         } />
 
     )
