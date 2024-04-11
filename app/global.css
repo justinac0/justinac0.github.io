@@ -45,6 +45,18 @@
   padding: 1ch;
 }
 
+.center-content {
+    margin: 0 auto auto;
+    max-width: 35rem;
+}
+
+@media (max-width: 1224px) {
+    .center-content {
+        width: 100vw;
+        max-width: 100%;
+    }
+}
+
 @media screen and (max-height: 600px) {
   .hide-on-small{
     display: none;
