@@ -1,0 +1,1 @@
+import{c as e,e as t}from"/build/_shared/chunk-MFPRU5OA.js";var f=e(t(),1);function o(){return(0,f.jsx)("a",{className:"go-back shadow-md rounded-br-lg fixed left-0 top-0",href:"/",children:"go back"})}var a=e(t(),1);function r({content:m}){return(0,a.jsxs)(a.Fragment,{children:[(0,a.jsx)(o,{}),(0,a.jsx)("div",{className:"pt-10 mr-12 ml-12",children:m})]})}export{r as a};
