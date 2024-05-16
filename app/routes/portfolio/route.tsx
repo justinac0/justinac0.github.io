@@ -12,6 +12,7 @@ export const links: LinksFunction = () => [
 
 export const loader = async () => {
     return json([
+        { title: "Polarization Simulation", description: "Visualizing polarization with rotating polerizers.", image: "/portfolio/3polar.gif", ghLink: "https://github.com/justinac0/polar" },
         { title: "Binary Visualizer (bv)", description: "Tool for visualizing binary blobs.", image: "/portfolio/bv.png", ghLink: "https://github.com/justinac0/bv" },
         { title: "Game of Life", description: "Conways game of life, written in C using raylib.", image: "/portfolio/life.gif", ghLink: "https://github.com/justinac0/raylib-game-of-life" },
         { title: "Mandlebrot Renderer", description: "Software rendered mandlebrot in C using raylib.", image: "/portfolio/fractal.png", ghLink: "https://github.com/justinac0/raylib-fractals" },
