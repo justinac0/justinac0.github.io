@@ -31,9 +31,9 @@ export default function Index() {
         <div className="absolute backdrop-blur-md outline outline-4 rounded-md profile-card">
           <div className='p-8'>
             <img className="w-32 h-32 mx-auto object-center mb-4 rounded-full border-2 border-white hide-on-small" src="/profile.jpg" alt="" width="128" />
-            <h1 className="text-2xl">Justin Chappell</h1>
+            <h1 className="text-3xl">Justin Chappell</h1>
             <hr />
-            <p className="md:text-sm xl:text-xl text-gray-400">Software Developer</p>
+            <p className="text-xl text-gray-400">Software Developer</p>
           </div>
 
           <ul className='flex items-center justify-end'>
