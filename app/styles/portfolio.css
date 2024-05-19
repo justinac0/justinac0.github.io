@@ -9,3 +9,28 @@
     margin-top: 1.5ch;
     width: 100%;
 }
+
+
+.portfolio-item-image:hover {
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.enlarge-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000a0;
+}
+.enlarge-image {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 75vw;
+    height: auto;
+}
