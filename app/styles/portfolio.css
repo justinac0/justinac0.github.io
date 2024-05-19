@@ -31,6 +31,7 @@
     left: 0;
     right: 0;
     margin: auto;
-    max-width: 75vw;
+    max-width: 90vw;
+    max-height: 90vw;
     height: auto;
 }
