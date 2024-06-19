@@ -24,6 +24,7 @@
     height: 100vh;
     background-color: #000000a0;
 }
+
 .enlarge-image {
     position: fixed;
     top: 0;
@@ -32,6 +33,6 @@
     right: 0;
     margin: auto;
     max-width: 90vw;
-    max-height: 90vw;
+    max-height: 90vh;
     height: auto;
 }
