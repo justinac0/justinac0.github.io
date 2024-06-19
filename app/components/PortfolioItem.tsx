@@ -29,13 +29,13 @@ export default function PortfolioItem({
         <div className="portfolio-item shadow-md p-4 mb-2 mr-2" onClick={view_image}>
             <h2 className="text-xl">{title}</h2>
             <div className="p-2 pb-0 portfolio-description">
-                <p className="text-md text-gray-200">{description}</p>
+                <p className="text-md text-gray-300">{description}</p>
             </div>
             <ImageViewer img={image} isLarge={isLarge}/>
             {isLarge && 
-            <div className=" z-2">
-                <a className="fixed bottom-2 left-2 bg-blue-700 hover:bg-blue-500 p-2 rounded-md text-xl" href={ghLink} target="_blank">Github</a>
-                <a className="fixed bottom-2 right-2 bg-red-700 hover:bg-red-500 p-2 rounded-md text-xl" onClick={close_image}>Close</a>
+            <div className="fixed top-3 left-2 z-2">
+                <a className="bg-blue-600 hover:bg-blue-500 p-2 rounded-md text-xl" href={ghLink} target="_blank">View Project On Github</a>
+                <a className="ml-2 bg-red-600 hover:bg-red-500 p-2 rounded-md text-xl" onClick={close_image}>Close Image</a>
             </div>
             }
         </div>
