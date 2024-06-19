@@ -37,15 +37,21 @@ export default function Portfolio() {
         setSearch(e.target.value);
     }
 
+    const escape_reg_exp = (string) => {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    };
+
     const filtered_portfolio = portfolioItems.filter(item => {
-        const regex = new RegExp(search, 'i');
+        const escapedTerm = escape_reg_exp(search);
+        const regex = new RegExp(escapedTerm, 'i');
         return regex.test(item.title) || regex.test(item.description);
     });
 
     const hightlight_text = (text, term) => {
         if (!term) return text;
 
-        const regex = new RegExp(`(${term})`, 'gi');
+        const escapedTerm = escape_reg_exp(search);
+        const regex = new RegExp(`(${escapedTerm})`, 'gi');
         const parts = text.split(regex);
 
         return parts.map((part, index) =>
