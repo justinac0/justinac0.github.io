@@ -6,7 +6,7 @@
 
 @layer base {
   * {
-    font-family: 'Lora', serif;
+    font-family: 'Roboto', sans-serif;
   }
   
   html {
@@ -17,21 +17,21 @@
     padding: 0;
     margin: 0;
     background-color: #191717;
-    color: #F1EFEF;
+    color: white;
     min-height: 100vh;
   }
   
   h1,h2,h3,h4 {
-    font-family: "Nunito", serif;
+    font-family: 'Roboto', sans-serif;
   }
   
   p,h5,h6 { 
-    font-family: 'Lora', serif;
+    font-family: 'Roboto', sans-serif;
   }  
 }
 
 .profile-card {
-  max-width: 360px;
+  max-height: 50vh;
 }
 
 .hide-on-small{
@@ -42,12 +42,17 @@
   background-color: #F05454;
   color: white;
   font-weight: bold;
-  padding: 1ch;
+  padding: 1.5ch;
 }
 
 .center-content {
     margin: 0 auto auto;
-    max-width: 35rem;
+    max-width: 50rem;
+}
+
+.highlight {
+  background-color: rgb(179, 179, 179);
+  color: #191717;
 }
 
 @media (max-width: 1224px) {

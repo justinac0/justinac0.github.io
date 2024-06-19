@@ -1,29 +1,21 @@
 import { useState } from "react";
 
 interface ImageViewerParams {
-    img: string
+    img: string,
+    isLarge: boolean
 };
 
 export default function ImageViewer({
-    img
+    img,
+    isLarge
 }: ImageViewerParams) {
-    const [isLarge, setIsLarge] = useState(false);
-
-    const view_image = () => {
-        setIsLarge(!isLarge);
-
-        if (isLarge) {
-
-        }
-    }
-
     return (
         <>
             <div>
-                <img className="portfolio-item-image" src={img} alt="" onClick={view_image}/>
+                <img className="portfolio-item-image" src={img} alt="" />
                 {isLarge &&
-                <div className="enlarge-backdrop" onClick={view_image}>
-                    <img className="enlarge-image" src={img} alt="" onClick={view_image}/>
+                <div className="enlarge-backdrop">
+                    <img className="enlarge-image" src={img} alt="" />
                 </div>}
             </div>
         </>

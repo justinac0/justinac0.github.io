@@ -1,5 +1,6 @@
 import { LinksFunction, json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { useState } from "react";
 
 import DefaultPageLayout from "~/components/DefaultPageLayout";
 import PortfolioItem from "~/components/PortfolioItem";
@@ -30,15 +31,41 @@ export const loader = async () => {
 
 export default function Portfolio() {
     const portfolioItems = useLoaderData<typeof loader>();
+    const [search, setSearch] = useState("");
+
+    const handle_search_change = (e) => {
+        setSearch(e.target.value);
+    }
+
+    const filtered_portfolio = portfolioItems.filter(item => {
+        const regex = new RegExp(search, 'i');
+        return regex.test(item.title) || regex.test(item.description);
+    });
+
+    const hightlight_text = (text, term) => {
+        if (!term) return text;
+
+        const regex = new RegExp(`(${term})`, 'gi');
+        const parts = text.split(regex);
+
+        return parts.map((part, index) =>
+          regex.test(part) ? <span key={index} className="highlight">{part}</span> : part
+        );
+    };
 
     return (
         <DefaultPageLayout content={
             <div className="center-content">
                 <h1 className="text-4xl text-center">Portfolio</h1>
                 <br />
-                <div className="flex flex-wrap justify-center">
-                    {portfolioItems.map((contents) => (
-                        <PortfolioItem key={contents.title} {...contents} />
+                <input className="text-lg input-box text-black" name="search" placeholder="Seach Portfolio..." type="text" value={search} onChange={handle_search_change}/>
+                <p className="mt-2 text-gray-300">Seach Results: {filtered_portfolio.length} of {portfolioItems.length}</p>
+                <br />
+                <div className="grid lg-grid-cols-2">
+                    {filtered_portfolio.map((contents) => (
+                    <>
+                        <PortfolioItem key={contents.title} {...contents} title={hightlight_text(contents.title, search)} description={hightlight_text(contents.description, search)} />
+                    </>
                     ))}
                 </div>
 

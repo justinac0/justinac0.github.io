@@ -1,19 +1,23 @@
 .portfolio-item {
-    max-width: 512px;
     border-radius: 5px;
     background-color: #413F42;
 }
 
-.portfolio-item-image {
+.portfolio-item:hover {
+    cursor: pointer;
+}
+
+.portfolio-description {
+    /* color: white; */
+    /* background-color: black; */
     border-radius: 5px;
-    margin-top: 1.5ch;
-    width: 100%;
 }
 
 
-.portfolio-item-image:hover {
-    border: 2px solid white;
-    cursor: pointer;
+.portfolio-item-image {
+    border-radius: 5px;
+    margin-top: 1.5ch;
+    width: auto;
 }
 
 .enlarge-backdrop {
@@ -22,7 +26,19 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #000000a0;
+    background-color: #000000c0;
+}
+
+.input-box {
+    padding: 1.5ch;
+    border-radius: 5px;
+    background-color: #413F42;
+    color: white;
+    border: 2px solid gray;
+}
+
+.input-box:focus {
+    border: 2px solid #F05454;
 }
 
 .enlarge-image {
@@ -32,7 +48,7 @@
     left: 0;
     right: 0;
     margin: auto;
-    max-width: 90vw;
+    max-width: 100vw;
     max-height: 90vh;
     height: auto;
 }
