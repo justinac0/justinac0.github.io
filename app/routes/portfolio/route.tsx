@@ -59,17 +59,13 @@ export default function Portfolio() {
                 <h1 className="text-4xl text-center">Portfolio</h1>
                 <br />
                 <input className="text-lg input-box text-black" name="search" placeholder="Seach Portfolio..." type="text" value={search} onChange={handle_search_change}/>
-                <p className="mt-2 text-gray-300">Seach Results: {filtered_portfolio.length} of {portfolioItems.length}</p>
+                <p className="mt-2 text-gray-400">Seach Results: {filtered_portfolio.length} of {portfolioItems.length}</p>
                 <br />
-                <div className="grid lg-grid-cols-2">
+                <div className="flex flex-wrap justify-center">
                     {filtered_portfolio.map((contents) => (
-                    <>
                         <PortfolioItem key={contents.title} {...contents} title={hightlight_text(contents.title, search)} description={hightlight_text(contents.description, search)} />
-                    </>
                     ))}
                 </div>
-
-                <br />
             </div>
         } />
     )

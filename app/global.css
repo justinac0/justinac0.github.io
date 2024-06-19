@@ -51,7 +51,8 @@
 }
 
 .highlight {
-  background-color: rgb(179, 179, 179);
+  font-weight: bolder;
+  background-color: yellow;
   color: #191717;
 }
 

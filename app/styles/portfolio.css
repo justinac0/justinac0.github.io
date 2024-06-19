@@ -1,4 +1,6 @@
 .portfolio-item {
+    max-width: 80vh;
+    height: auto;
     border-radius: 5px;
     background-color: #413F42;
 }
@@ -8,11 +10,8 @@
 }
 
 .portfolio-description {
-    /* color: white; */
-    /* background-color: black; */
     border-radius: 5px;
 }
-
 
 .portfolio-item-image {
     border-radius: 5px;
@@ -48,7 +47,14 @@
     left: 0;
     right: 0;
     margin: auto;
-    max-width: 100vw;
-    max-height: 90vh;
+    max-width: 80vw;
+    max-height: 80vh;
     height: auto;
 }
+
+@media only screen and (max-width: 1000px) {
+    .portfolio-item {
+        max-width: 60vh;
+    }
+}
+  
