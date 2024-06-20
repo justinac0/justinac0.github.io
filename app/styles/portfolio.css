@@ -57,4 +57,9 @@
         max-width: 60vh;
     }
 }
+
+.btn {
+    background-color: #F05454;
+    padding: 1.5ch;
+}
   

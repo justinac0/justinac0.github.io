@@ -33,9 +33,9 @@ export default function PortfolioItem({
             </div>
             <ImageViewer img={image} isLarge={isLarge}/>
             {isLarge && 
-            <div className="fixed top-3 left-2 z-2">
-                <a className="bg-blue-600 hover:bg-blue-500 p-2 rounded-md text-xl" href={ghLink} target="_blank">View Project On Github</a>
-                <a className="ml-2 bg-red-600 hover:bg-red-500 p-2 rounded-md text-xl" onClick={close_image}>Close Image</a>
+            <div className="fixed top-6 left-2 z-2">
+                <a className="p-2 rounded-md text-xl btn" href={ghLink} target="_blank">View Project On Github</a>
+                <a className="ml-2 p-2 rounded-md text-xl text-red-400" onClick={close_image}>Close Image</a>
             </div>
             }
         </div>
