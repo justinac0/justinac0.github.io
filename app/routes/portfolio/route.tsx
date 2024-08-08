@@ -13,6 +13,8 @@ export const links: LinksFunction = () => [
 
 export const loader = async () => {
     return json([
+        { title: "Univerity Physics Research Project (WIP)", description: "Monte carlo simulation of brownian dynamics of water diffuse in articular cartilage.", image: "/portfolio/0_10128_diffuse.png", ghLink: "https://github.com/justinac0/CollagenPrototype" },
+        { title: "Water Diffuse in Collagen", description: "Proof of concept simulation of bulk water diffusion inside a collagen fibre network (in the radial zone).", image: "/portfolio/collagen.png", ghLink: "https://github.com/justinac0/CollagenPrototype" },
         { title: "Image to Ascii Tool", description: "Tool for converting image data into plain text, written in python.", image: "/portfolio/ascii.png", ghLink: "https://github.com/justinac0/image-ascii" },
         { title: "Single Crystal Cubic Analysis", description: "Tool for conducting basic analysis of single crystal cubic structures with Powder XRD data.", image: "/portfolio/xrd.png", ghLink: "https://github.com/justinac0/scca" },
         { title: "Polarization Simulation", description: "Visualizing polarization with rotating polerizers.", image: "/portfolio/3polar.gif", ghLink: "https://github.com/justinac0/polar" },
@@ -24,7 +26,6 @@ export const loader = async () => {
         { title: "IoT Renderer", description: "Emulated Nokia screen to test rendering methods for a university assessment.", image: "/portfolio/cube.gif" },
         { title: "Raycaster", description: "Basic raycaster, like its the early 90s all over again.", image: "/portfolio/raycaster.gif", ghLink: "https://github.com/justinac0/raylib-raycaster" },
         { title: "Shady (Shader Toy Clone)", description: "Graphics shader programming tool. Based off shader toy.", image: "/portfolio/rtweekend_1.gif", ghLink: "https://github.com/justinac0/shady" },
-        // { title: "Flask Todo App", description: "", image: "/portfolio/flask-todo.png", ghLink: "https://github.com/justinac0/flask-todo" },
         { title: "dmenu fork", description: "Personal dmenu patch.", image: "/portfolio/dmenu.png", ghLink: "https://github.com/justinac0/justinac0-dmenu" },
     ]);
 }
