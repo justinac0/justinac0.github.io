@@ -13,7 +13,7 @@ export const links: LinksFunction = () => [
 
 export const loader = async () => {
     return json([
-        { title: "University Physics Research Project (WIP)", description: "Monte carlo simulation of brownian dynamics of water diffuse in articular cartilage.", image: "/portfolio/0_10128_diffuse.png", ghLink: "https://github.com/justinac0/CollagenPrototype" },
+        { title: "University Physics Research Project (WIP)", description: "Monte carlo simulation of water diffusion in articular cartilage.", image: "/portfolio/0_10128_diffuse.png", ghLink: "https://github.com/justinac0/CollagenPrototype" },
         { title: "Water Diffuse in Collagen", description: "Proof of concept simulation of bulk water diffusion inside a collagen fibre network (in the radial zone).", image: "/portfolio/collagen.png", ghLink: "https://github.com/justinac0/CollagenPrototype" },
         { title: "Image to Ascii Tool", description: "Tool for converting image data into plain text, written in python.", image: "/portfolio/ascii.png", ghLink: "https://github.com/justinac0/image-ascii" },
         { title: "Single Crystal Cubic Analysis", description: "Tool for conducting basic analysis of single crystal cubic structures with Powder XRD data.", image: "/portfolio/xrd.png", ghLink: "https://github.com/justinac0/scca" },
