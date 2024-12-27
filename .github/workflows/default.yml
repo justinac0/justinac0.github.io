@@ -34,15 +34,9 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
 
-      - name: Start server and mirror it with wget
-        run: |
-              yarn start &
-              sleep 10 &&
-              wget --mirror http://localhost:4321 -P out --no-host-directories --page-requisites --adjust-extension
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          publish_dir: ./dist
