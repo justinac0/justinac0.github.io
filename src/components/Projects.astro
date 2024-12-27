@@ -1,0 +1,11 @@
+---
+import { getCollection } from "astro:content";
+import Carousel from "./Carousel";
+
+const projects = await getCollection("project");
+---
+
+<div>
+    <h1>Projects</h1>
+    <Carousel ProjectMeta={projects} client:visible />
+</div>
