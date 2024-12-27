@@ -1,0 +1,6 @@
+{
+    "title": "X-Ray Diffraction Analysis",
+    "description": "A tool for determining lattice constants of single crystal cubic structures. This project was created to automate the data analysis of Powder XRD sample data for an assessment.",
+    "img": "/src/assets/project/xrd.png",
+    "url": "https://www.github.com/justinac0/scca"
+}

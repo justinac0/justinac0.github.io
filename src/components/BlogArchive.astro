@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection("blog");
+
+const groupedPosts: Record<number, string> = posts.reduce((acc: any, post) => {
+    const year = post.data.date.getFullYear();
+    if (!acc[year]) {
+        acc[year] = [];
+    } 
+    acc[year].push(post);
+
+    return acc;
+}, {});
+---
+
+<div>
+    <h1>Blogs</h1>
+    <p>The opinions and thoughts stated in these blogs are my own and do not reflect the opinions of my employer.</p>
+    <!-- <form>
+        <input type="text" placeholder="search"/>
+    </form> -->
+    <hr>
+    {Object.entries(groupedPosts).toSorted(([a],[b]) => b - a).map(([year, posts]) => 
+        {return posts.length > 0 &&
+                <h2 class="text-xl">
+                    {year}
+                </h2>
+
+                <ul>
+                {posts.map(post => {
+                    return <li id={post.data.slug}>
+                        {post.data.published && <a href={`/blog/${post.data.slug}`}>{post.data.title}</a>}
+                        {!post.data.published && <a>{post.data.title} <span class="text-red-500">PLANNED</span></a>}
+                        {post.data.tags.map(tag => <span class="p-1 mr-2 bg-cyan-900 rounded-md text-xs">{tag}</span>)}
+                        </li>
+                    })}
+                </ul>
+            </details>
+        })}
+</div>

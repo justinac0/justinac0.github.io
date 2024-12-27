@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import Projects from '../components/Projects.astro';
+import BlogArchive from '../components/BlogArchive.astro';
+---
+
+<Layout>
+    <header>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <h1 class="text-4xl">Justin Chappell</h1>
+                <p class="text-2xl"><b>Software Developer</b></p>
+                <nav class="flex space-x-4">
+                    <a href="https://www.github.com/justinac0" target="_blank">github</a>
+                    <a href="https://www.linkedin.com/in/justinac0/" target="_blank">linkedin</a>
+                    <a href="https://www.github.com/justinac0" target="_blank">cv</a>
+                </nav>
+            </div>
+
+            <img src="/profile.jpg" alt="Justin Chappell" class="m-0 hidden md:block border-l-8 border-cyan-600" />
+        </div>
+    </header>
+
+    <p class="text-md">Studying computer science and physics at <a href="https://www.qut.edu.au/">QUT</a>, currently work in RnD electronics as a Software Developer.</p>
+
+    <Projects />
+    <BlogArchive />
+</Layout>
