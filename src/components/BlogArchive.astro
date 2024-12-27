@@ -23,19 +23,24 @@ const groupedPosts: Record<number, string> = posts.reduce((acc: any, post) => {
     <hr>
     {Object.entries(groupedPosts).toSorted(([a],[b]) => b - a).map(([year, posts]) => 
         {return posts.length > 0 &&
-                <h2 class="text-xl">
-                    {year}
-                </h2>
+            <h2 class="text-xl">
+                {year}
+            </h2>
 
-                <ul>
-                {posts.map(post => {
-                    return <li id={post.data.slug}>
-                        {post.data.published && <a href={`/blog/${post.data.slug}`}>{post.data.title}</a>}
-                        {!post.data.published && <a>{post.data.title} <span class="text-red-500">PLANNED</span></a>}
-                        {post.data.tags.map(tag => <span class="p-1 mr-2 bg-cyan-900 rounded-md text-xs">{tag}</span>)}
-                        </li>
-                    })}
-                </ul>
-            </details>
+            <ul>
+            {posts.map((post: any) => {
+                return <li id={post.data.slug}>
+                    {post.data.published && <a href={`/blog/${post.data.slug}`}>{post.data.title}</a>}
+                    {!post.data.published && <a class="disabled-a">{post.data.title} <span class="text-red-500">PLANNED</span></a>}
+                    {post.data.tags.map((tag: string) => <span class="p-1 mr-2 bg-cyan-900 rounded-md text-xs">{tag}</span>)}
+                    </li>
+                })}
+            </ul>
         })}
 </div>
+
+<style>
+.disabled-a {
+    color: gray;
+}
+</style>
