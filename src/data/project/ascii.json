@@ -1,6 +1,6 @@
 {
     "title": "Image to ASCII Converter",
     "description": "Tool for converting image data into plain text, written in python.",
-    "img": "/public/project/ascii.png",
+    "img": "/project/ascii.png",
     "url": "https://www.github.com/justinac0/image-ascii"
 }
