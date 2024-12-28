@@ -16,8 +16,8 @@ export default function Carousel({
 
     return (
         <div>
-            <div class="h-[360px] flex justify-center items-center">
-                <img class="max-w-[360px] m-0"src={ProjectMeta[currentIndex].data.img} alt={ProjectMeta[currentIndex].data.description} />
+            <div class="w-[100%] flex justify-center">
+                <img class="w-[95%] m-0"src={ProjectMeta[currentIndex].data.img} alt={ProjectMeta[currentIndex].data.description} />
             </div>
             <div class="flex justify-center">
                 <button onClick={prev} id="prev"><b>{"<-"}</b></button>
