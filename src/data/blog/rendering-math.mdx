@@ -1,45 +1,115 @@
 ---
 title: 'Rendering Math Fundamentals'
 author: 'Justin Chappell'
-description: '...'
-date: 2024-12-25
+description: 'In this article I go through the fundamentals of the mathematics required for rendering 3D rasterized graphics.'
+date: 2024-12-30
 slug: 'rendering-math'
 tags: ['math', 'graphics']
 published: false
 ---
 
+import Latex from '../../components/Latex.astro';
+
 # Rendering Math Fundamentals
 
-Have you ever wondered how computers display 3D graphics?
-In this blog I will attempt to demistify an aspect of this,
-specifically the mathematics required to render geometric
-primitives in a rasterization-based rendering library
-(like [OpenGL](https://www.khronos.org/opengl/wiki/FAQ#What_is_OpenGL),
-or [DirectX]()).
-I would recommend that spend some time learning  
-[linear algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
-if you haven't encountered it before reading this blog. If not, no worries, there
-will be some [helpful links](#helpful-resources) at the end to help you suppliment
-your learning.
-
 ## Introduction
+Have you ever wondered how computers display 3D graphics?
+How can we depict 3D environment on a '2D' monitor/screen?
+In this blog I will attempt to demistify this process.
+![screenshot from cryengine](/blog/rendering-math/cryengine.jpg "screenshot from cryengine")
 
+Before I get into it I just have a couple of things to say,
+I will not be covering the basics of graphics APIs, as the main
+focus is math not graphics programming. If you happen to be
+interested in that [this](https://learnopengl.com/Getting-started/Hello-Triangle)
+is a great place to start.
 
+## Key Point(s)
+
+The key to transforming geometric primitives into 3D requires the multiplication of three matricies against some vertex position.
+
+<Latex formula='\vec{v_p}\prime=PVM\vec{v_p}'/>
+{/* - **Model Matrix (M):**
+- **View Matrix (V):**
+- **Perspective Matrix (P):**
+- **Projected Vertex Position (<Latex formula='\vec{v_p}\prime' />):**
+- **Vertex Position (<Latex formula='\vec{v_p}' />):** */}
+
+An example of this matrix multiplication in [GLSL](https://www.khronos.org/opengl/wiki/Core_Language_(GLSL)) looks something like this (vertex shader):
+```glsl
+// NOTE(reader): I intentionally left out code
+// relating to fragments because this blog is
+// more about math than implementation to
+// rendering pipelines
+layout (location = 0) in vec3 vertices;
+
+uniform mat4 P;
+uniform mat4 V;
+uniform mat4 T;
+
+void main() {
+    gl_Position = P * V * T * vec4(vertices, 1);
+}
+```
+
+![](/blog/rendering-math/3D-chunk.png "rendering some voxels")
 
 ## Vectors
 
+![](/blog/rendering-math/vector.png)
+
+Pointing is rude! We'll that's a vectors purpose, yes to be rude...whoops
+I mean to point. They're a mathematical tool to describe some line
+of some discrete length that points in some direction. Vectors have a
+tail (starting position), head (end position) and some length (magnitude).
+
+If you have ever taking a physics class you have surely run into them before.
+In the image above we see the vector <Latex formula='\vec{A}=(2,3)' />, this
+is called a 2D vector. Vectors can be described in any number of dimensions;
+however, we will be primarily focusing on 3D vectors.
+
+### Operations 
+*ADD:* <Latex formula='\vec{a}+\vec{b}=\\' />
+*SUBTRACT:* <Latex formula='\vec{a}-\vec{b}=\\' />
+*MULTIPLY:* <Latex formula='\vec{a}\times\vec{b}=\\' />
+*DOT:* <Latex formula='\vec{a}\cdot\vec{b}=\\' />
+*CROSS:* <Latex formula='\vec{a}\times\vec{b}=\\' />
+*MAGNITUDE:* <Latex formula='|\vec{a}|=\\' />
+*UNIT:* <Latex formula='\hat{a}=\frac{\vec{a}}{|\vec{a}|}\\' />
+
 ## Matrices
 
-## Projection (Frustrum)
+### Operations
+*ADD:* <Latex formula='AB\\' />
+*SUB:* <Latex formula='AB\\' />
+*MULTIPLY:* <Latex formula='AB\\' />
+*TRANSPOSE:* <Latex formula='A^T\\' />
 
-## View (Camera)
+## Matrix Transformations
+### Scale
+
+### Translation
+
+### Rotation
+
+## Special Matricies
+
+### Perspective
+
+### Orthographic
+
+### View
+
+### Lookat
 
 ## Putting it all together
+
+## Conclusion
 
 ## Excersises
 
 ## Helpful Resources
-
 - [Linear Algebra Done Right (Text Book)](https://linear.axler.net/)
-- [MIT Linear Algebra Course (FREE)](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
-- [Khan Academy (FREE)](https://www.khanacademy.org/)
+- [MIT Linear Algebra Course (Course)](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
+- [Model View Projection (ARTICLE)](https://jsantell.com/model-view-projection/)
+- [Essence of linear algebra (Video Playlist)](https://www.youtube.com/@3blue1brown)
