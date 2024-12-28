@@ -31,7 +31,7 @@ const groupedPosts: Record<number, string> = posts.reduce((acc: any, post) => {
             {posts.map((post: any) => {
                 return <li id={post.data.slug}>
                     {post.data.published && <a href={`/blog/${post.data.slug}`}>{post.data.title}</a>}
-                    {!post.data.published && <a class="disabled-a">{post.data.title} <span class="text-red-500">PLANNED</span></a>}
+                    {!post.data.published && <a class="disabled-a">{post.data.title} <span class="text-red-500"><b>PLANNED</b></span></a>}
                     {post.data.tags.map((tag: string) => <span class="p-1 mr-2 bg-cyan-900 rounded-md text-xs">{tag}</span>)}
                     </li>
                 })}
