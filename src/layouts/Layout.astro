@@ -1,7 +1,7 @@
 ---
 import Prose from "../components/Prose.astro"
 
-const projectImgs = Object.values(import.meta.glob("/project/*.{jpg,jpeg,gif,png,PNG}", {eager: true}));
+const projectImgs: Array<string> = Object.values(import.meta.glob("/project/*.{jpg,jpeg,gif,png,PNG}", {eager: true}));
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@ const projectImgs = Object.values(import.meta.glob("/project/*.{jpg,jpeg,gif,png
 
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.18/dist/katex.min.css" integrity="sha384-veTAhWILPOotXm+kbR5uY7dRamYLJf58I7P+hJhjeuc7hsMAkJHTsPahAl0hBST0" crossorigin="anonymous">
 
-		{projectImgs.map(img => <link rel="preload" href={img} as={img} />)}
+		{projectImgs.map(img => <link rel="preload" href={img} as="image" />)}
 	</head>
 	<body>
 		<Prose>
