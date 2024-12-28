@@ -1,0 +1,5 @@
+{
+    "title": "Blacksmithing Temperature Tool",
+    "description": "Using basic concepts of black body radiation and emmited spectra from hot metal you can determine the temperature of the heated metal. This is a simple tool that you can use to observe this phenomena.",
+    "img": "/project/bbody.png"
+}
