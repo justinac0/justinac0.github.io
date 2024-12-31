@@ -2,10 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import Layout from '../../layouts/Layout.astro';
 
-import { getCollection, render, getEntry } from "astro:content";
-
-const { id } = Astro.params;
-console.log("id: ", id);
+import { getCollection, render } from "astro:content";
 
 type BlogCollectionEntry = Awaited<ReturnType<typeof getCollection<"blog">>>[0];
 

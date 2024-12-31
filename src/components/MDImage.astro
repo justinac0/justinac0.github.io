@@ -1,0 +1,11 @@
+---
+const { alt = '', src = '', customStyle = '', ref = '' } = Astro.props;
+---
+
+<div class="rounded-xl bg-black border-4 border-cyan-600 mb-4">
+    <img class=`m-0 ${ref && "!rounded-b-none"}` style=`${customStyle};` src={src} alt={alt} />
+    {ref && <p class=" pr-2 pl-2 m-0 line-clamp-1"><b>REF:</b> <a class="text-ellipsis overflow-hidden" href={ref}>{ref}</a></p>}
+</div>
+
+<style>
+</style>
