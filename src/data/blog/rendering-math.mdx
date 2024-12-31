@@ -16,11 +16,15 @@ import MDImage from '../../components/MDImage.astro';
 ## Introduction
 Have you ever wondered how computers display 3D graphics?
 How can we depict 3D environment on a '2D' screen?
-In this blog I will attempt to demistify this process.
+In this blog I will put forward the basic math required to accomplish this.
+My intention is for this blog to be more of a reference rather than spending
+too much time on specifics. For more in depth coverage of this topic as well
+as helpful resources I have provided a bunch of links at the end of the blog
+if you're interested.
 
 <MDImage src="/blog/rendering-math/cryengine.jpg" alt="screenshot from cryengine" ref="https://store.steampowered.com/app/220980/CRYENGINE/" />
 
-What 3D graphics renderes rasterizers do is relativly simple,
+What 3D graphics rasterizers do is quite simple,
 they project geometry defined in 3D space onto a 2D rectangle (your screen).
 
 <MDImage src="/blog/rendering-math/view.png" alt="" customStyle="background-color: #fff; padding: 2rem;" ref="https://www.baeldung.com/wp-content/uploads/sites/4/2023/05/perspective-projection-1.png"/>
@@ -86,12 +90,7 @@ Multiply two vectors component-wise.
 **DOT:** <Latex formula='\vec{a}\cdot\vec{b}=\vec{a}\cdot\vec{b}=\begin{bmatrix}x\\y\\z\end{bmatrix}\cdot\begin{bmatrix}x\\y\\z\end{bmatrix}=a_0b_0+a_0b_0+a_1b_1\\' />
 The inner product of two same length vectors results in a scalar value showing the similarity in pointing direction of the to vectors.
 
-**CROSS:** <Latex formula='\vec{a}\times\vec{b}=
-\begin{bmatrix}
- a_1b_2 - a_2b_1\\
--a_0b_2 - a_2b_0\\
- a_0b_1 - a_1b_0
-\end{bmatrix}\\' />
+**CROSS:** <Latex formula='\vec{a}\times\vec{b}=\begin{bmatrix}a_1b_2 - a_2b_1\\-a_0b_2 - a_2b_0\\a_0b_1 - a_1b_0\end{bmatrix}\\' />
 Produces an orthogonal vector to both vectors.
 
 **MAGNITUDE:** <Latex formula='|\vec{a}|=\sqrt{a_x^2+a_y^2+a_z^2}\\' />
@@ -110,27 +109,45 @@ if you are in the wrong major just transpose the matrix in question.
 
 ### Operations
 
-*IDENTITY*: <Latex formula='I=
-\begin{bmatrix}
+**IDENTITY:** <Latex formula='I=\begin{bmatrix}
 1 & 0 & 0 & 0\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0\\
 0 & 0 & 0 & 1
 \end{bmatrix}\\' />
+Must be a square matrix, unique property that if you multiply
+some other matrix of the same size by the identity matrix the other
+matrix will be the result.
 
+**ADDITION:** Similar to vectors, do component-wise addition
 
-*ADDITION:* <Latex formula='A+B=\\' />
+**SUBTRACT:** Similar to vectors, do component-wise subtraction
 
+**MULTIPLY:** <Latex formula='AB=\begin{bmatrix}
+a & b\\
+c & d
+\end{bmatrix}
+\begin{bmatrix}
+e & f\\
+g & h
+\end{bmatrix}=
+\begin{bmatrix}
+ae + bg & af + bh\\
+ce + dg & cf + dh\\
+\end{bmatrix}\\' />
+[Same process](https://www.mathsisfun.com/algebra/matrix-multiplying.html) for larger matricies.
 
-*SUBTRACT:* <Latex formula='A-B=\\' />
-
-
-*MULTIPLY:* <Latex formula='AB=\\' />
-
-
-*TRANSPOSE:* <Latex formula='A^T=\\' />
-
-{/* *INVERSE:* <Latex formula='A^{-1}=\\' /> */}
+**TRANSPOSE:** <Latex formula='A=
+\begin{bmatrix}
+a & b\\
+c & d
+\end{bmatrix},\\
+A^T=\begin{bmatrix}
+a & c\\
+b & d
+\end{bmatrix}\\' />
+Essentially reflecting the matrix along the leading diagonal.
+[Same process](https://math.libretexts.org/Bookshelves/Linear_Algebra/Fundamentals_of_Matrix_Algebra_(Hartman)/03%3A_Operations_on_Matrices/3.01%3A_The_Matrix_Transpose) for larger matricies.
 
 
 ## Matrix Transformations
@@ -142,7 +159,7 @@ matrix.
 
 ### Scale
 
-<Latex formula='\begin{bmatrix}
+<Latex formula='S=\begin{bmatrix}
 S_x & 0 & 0 & 0\\
 0 & S_y & 0 & 0\\
 0 & 0 & S_z & 0\\
@@ -151,7 +168,7 @@ S_x & 0 & 0 & 0\\
 
 ### Translation
 
-<Latex formula='\begin{bmatrix}
+<Latex formula='T=\begin{bmatrix}
 0 & 0 & 0 & T_x\\
 0 & 0 & 0 & T_y\\
 0 & 0 & 0 & T_z\\
@@ -169,6 +186,8 @@ For each axis we need to define a 3x3 rotation matrix.
 
 The final rotation matrix is formed by multiplying in order 
 of yaw pitch and roll <Latex formula='R=R_z(\theta_z)R_y(\theta_y)R_x(\theta_x)' />.
+
+<Latex formula='\theta' /> is in radians.
 
 *<Latex formula='R_x(\theta)=' />*<Latex formula='\begin{bmatrix}
 1 & 0 & 0\\
@@ -192,22 +211,58 @@ In practice the rotation matrix is actually a 4x4 matrix (just zero out the new 
 enables the multiplcation of this matrix against the scale and
 translation matrix to form the model matrix <Latex formula='M' />.
 
+The order of this multiplication for the model matrix is:
+<Latex formula='M=SRT' />
+
+
 ## Special Matricies
 
 ### Perspective
 
-{/* ### Orthographic */}
+<Latex formula='m00=\frac{1}{aspect\cdot\tan{(\theta_{fov}/2)}}\\' />
+<Latex formula='m11=\frac{1}{\tan{(\theta_{fov}/2)}}\\' />
+<Latex formula='m22=-\frac{far_z+near_z}{far_z-near_z}\\' />
+<Latex formula='m23=-\frac{2 far_z near_z}{far_z-near_z}\\' />
+<Latex formula='m32=-1\\' />
+
+<Latex formula='P=\begin{bmatrix}
+m00 & 0 & 0 & 0\\
+0 & m11 & 0 & 0\\
+0 & 0 & m22 & m23\\
+0 & 0 & m32 & 0
+\end{bmatrix}\\' />
+
+**aspect:** Desired aspect ratio for the geometry to be rendered at.
+
+
+**<Latex formula='\theta_{fov}' />**: Field of view in radians.
+
+
+**<Latex formula='far_z' />**: Far clipping plane.
+
+
+**<Latex formula='near_z' />**: Near clipping plane.
+
 
 ### View
+<Latex formula='V=\begin{bmatrix}
+L_x & L_y & L_z & P_x\\
+U_x & U_y & U_z & P_x\\
+R_x & R_y & R_z & P_x\\
+0 & 0 & 0 & 1
+\end{bmatrix}' />
+<Latex formula='L' />: Left of the view (Camera).
 
-### Lookat
+<Latex formula='U' />: Up of the view (Camera).
 
-## Putting it all together
+<Latex formula='R' />: Right of the view (Camera).
 
-## Conclusion
+<Latex formula='P' />: View (Camera) position.
 
 ## Helpful Resources
 - [Linear Algebra Done Right (Text Book)](https://linear.axler.net/)
 - [MIT Linear Algebra Course (Course)](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Model View Projection (ARTICLE)](https://jsantell.com/model-view-projection/)
 - [Essence of linear algebra (Video Playlist)](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
+- [Learn OpenGL (Tutorial)](https://learnopengl.com/Getting-started/OpenGL)
+- [Learn Computer Graphics Using WebGL (Tutorial)](https://webgl.brown37.net/toc.html)
