@@ -18,13 +18,13 @@ Have you ever wondered how computers display 3D graphics?
 How can we depict 3D environment on a '2D' screen?
 In this blog I will put forward the basic math required to accomplish this.
 My intention is for this blog to be more of a reference rather than spending
-too much time on specifics. For more in depth coverage of this topic as well
+too much time on specifics. For more in-depth coverage of this topic as well
 as helpful resources I have provided a bunch of links at the end of the blog
 if you're interested.
 
-<MDImage src="/blog/rendering-math/cryengine.jpg" alt="screenshot from cryengine" ref="https://store.steampowered.com/app/220980/CRYENGINE/" />
+<MDImage src="/blog/rendering-math/cryengine.jpg" alt="screenshot from CryEngine" ref="https://store.steampowered.com/app/220980/CRYENGINE/" />
 
-What 3D graphics rasterizers do is quite simple,
+What 3D graphics rasterisers do is quite simple,
 they project geometry defined in 3D space onto a 2D rectangle (your screen).
 
 <MDImage src="/blog/rendering-math/view.png" alt="" customStyle="background-color: #fff; padding: 2rem;" ref="https://www.baeldung.com/wp-content/uploads/sites/4/2023/05/perspective-projection-1.png"/>
@@ -35,8 +35,8 @@ the view plane.
 <Latex formula='\vec{v_p}\prime=PVM\vec{v_p}'/>
 
 On the *LHS* we have our final vertex position (projected to our view rectangle), and on the *RHS* we
-see the perspective, view and model matricies multiplied against our
-vertex position in 3D space.
+see the perspective, view and model matrices multiplied against the
+vertex positions of some defined geometry in 3D space.
 
 {/* ![](/blog/rendering-math/3D-chunk.png "rendering some voxels") */}
 
@@ -44,20 +44,18 @@ vertex position in 3D space.
 what objects look like at different distances from our view.
 Effectively defining what is called the view frustrum. Objects closer
 to the origin of our view will appear bigger or smaller depending
-on the type of frustrum created. This gives us the ability to percieve
+on the type of frustrum created. This gives us the ability to perceive
 depth.
 
 <MDImage src="/blog/rendering-math/perspective.jpg" alt="" customStyle="background-color: #fff; padding: 2rem;" ref="https://i.sstatic.net/Eh4rc.jpg"/>
 
-There are plenty of [different](https://en.wikipedia.org/wiki/3D_projection) perspective matricies at our dispense,
+There are plenty of [different](https://en.wikipedia.org/wiki/3D_projection) perspective matrices at our dispense,
 but by far the most common one used in 3D games/graphics is the
 perspective projection matrix.
 
 2. **View (<Latex formula='V' />)**: We can think of the view matrix as a sort of camera. Different
-from cameras in real life however this camera has less to do with light sensors
-and more to do with where we are and what are we looking. There are many
-different ways to form this matrix, but we will be looking specifically at
-a special matrix called the lookat matrix.
+from cameras in real life, this camera has less to do with light sensors
+and more to do with where we are and what are we looking.
 
 3. **Model (<Latex formula='M' />)**: If we wish to either scale, rotate or translate and object in a 3D scene
 we can do that through the model matrix. This matrix defines the scale rotation and location of an object in
@@ -71,9 +69,9 @@ such a renderer.
 
 Vectors describe different things depending on their context. They are useful
 in grouping similar information into a neat package. In graphics vectors
-can be used to describe positions of vertices (xyz), colors (rgb), quaternions (wxyz).
+can be used to describe positions of vertices (xyz), colours (rgb), quaternions (wxyz).
 For most cases the values are float/reals, but sometimes it may come in handy
-to have interger based components or other types.
+to have integer based components or other types.
 ### Operations 
 
 **ADDITION:** <Latex formula='\vec{a}+\vec{b}=\begin{bmatrix}x\\y\\z\end{bmatrix}+\begin{bmatrix}x\\y\\z\end{bmatrix}=\begin{bmatrix}2x\\2y\\2z\end{bmatrix}\\' />
@@ -82,10 +80,8 @@ Add two vectors component-wise.
 **SUBTRACT:** <Latex formula='\vec{a}-\vec{b}=\begin{bmatrix}x\\y\\z\end{bmatrix}-\begin{bmatrix}x\\y\\z\end{bmatrix}=\begin{bmatrix}0\\0\\0\end{bmatrix}\\' />
 Subtract two vectors component-wise.
 
-
 **MULTIPLY:** <Latex formula='\vec{a}\vec{b}=\begin{bmatrix}x\\y\\z\end{bmatrix}\begin{bmatrix}x\\y\\z\end{bmatrix}=\begin{bmatrix}x^2\\y^2\\z^2\end{bmatrix}\\' />
 Multiply two vectors component-wise.
-
 
 **DOT:** <Latex formula='\vec{a}\cdot\vec{b}=\vec{a}\cdot\vec{b}=\begin{bmatrix}x\\y\\z\end{bmatrix}\cdot\begin{bmatrix}x\\y\\z\end{bmatrix}=a_0b_0+a_0b_0+a_1b_1\\' />
 The inner product of two same length vectors results in a scalar value showing the similarity in pointing direction of the to vectors.
@@ -103,7 +99,7 @@ Unit length vector (length of 1).
 
 Similarly to vectors, the contents of a matrix depend on the context that
 you use them. In most of 3D graphics we will be dealing with 4x4 (float/real values) matrices.
-Graphics APIs like OpenGL don't care if your matricies are row or column
+Graphics APIs like OpenGL don't care if your matrices are row or column
 major; however, whatever major you major in :) keep it consistent. Furthermore,
 if you are in the wrong major just transpose the matrix in question.
 
@@ -116,7 +112,7 @@ if you are in the wrong major just transpose the matrix in question.
 0 & 0 & 0 & 1
 \end{bmatrix}\\' />
 Must be a square matrix, unique property that if you multiply
-some other matrix of the same size by the identity matrix the other
+some other matrices of the same size by the identity matrix the other
 matrix will be the result.
 
 **ADDITION:** Similar to vectors, do component-wise addition
@@ -135,7 +131,7 @@ g & h
 ae + bg & af + bh\\
 ce + dg & cf + dh\\
 \end{bmatrix}\\' />
-[Same process](https://www.mathsisfun.com/algebra/matrix-multiplying.html) for larger matricies.
+[Same process](https://www.mathsisfun.com/algebra/matrix-multiplying.html) for larger matrices.
 
 **TRANSPOSE:** <Latex formula='A=
 \begin{bmatrix}
@@ -147,13 +143,12 @@ a & c\\
 b & d
 \end{bmatrix}\\' />
 Essentially reflecting the matrix along the leading diagonal.
-[Same process](https://math.libretexts.org/Bookshelves/Linear_Algebra/Fundamentals_of_Matrix_Algebra_(Hartman)/03%3A_Operations_on_Matrices/3.01%3A_The_Matrix_Transpose) for larger matricies.
-
+[Same process](https://math.libretexts.org/Bookshelves/Linear_Algebra/Fundamentals_of_Matrix_Algebra_(Hartman)/03%3A_Operations_on_Matrices/3.01%3A_The_Matrix_Transpose) for larger matrices.
 
 ## Matrix Transformations
 
 In this section I will cover the basic transformation matrices required to
-scale, rotate and translate geometry. These matricies are fundamental
+scale, rotate and translate geometry. These matrices are fundamental
 for creating a model matrix as well as manipulating the view (camera)
 matrix.
 
@@ -177,10 +172,10 @@ S_x & 0 & 0 & 0\\
 
 ### Rotation
 
-I will only cover euler rotations here; however, there
+I will only cover Euler rotations here; however, there
 are more efficient ways to calculate the rotation matrix.
-Namely through the use of quaternions. I will cover
-quaternions in a seperate blog eventually.
+Namely using quaternions. I will cover
+quaternions in a separate blog eventually.
 
 For each axis we need to define a 3x3 rotation matrix.
 
@@ -207,15 +202,14 @@ sin{\theta} & cos{\theta} & 0\\
 0 & 0 & 1\\
 \end{bmatrix}'/>
 
-In practice the rotation matrix is actually a 4x4 matrix (just zero out the new row and column). This
-enables the multiplcation of this matrix against the scale and
+In practice the rotation matrix is a 4x4 matrix (just zero out the new row and column). This
+enables the multiplication of this matrix against the scale and
 translation matrix to form the model matrix <Latex formula='M' />.
 
 The order of this multiplication for the model matrix is:
 <Latex formula='M=SRT' />
 
-
-## Special Matricies
+## Special Matrices
 
 ### Perspective
 
@@ -234,15 +228,11 @@ m00 & 0 & 0 & 0\\
 
 **aspect:** Desired aspect ratio for the geometry to be rendered at.
 
-
 **<Latex formula='\theta_{fov}' />**: Field of view in radians.
-
 
 **<Latex formula='far_z' />**: Far clipping plane.
 
-
 **<Latex formula='near_z' />**: Near clipping plane.
-
 
 ### View
 <Latex formula='V=\begin{bmatrix}
@@ -266,3 +256,4 @@ R_x & R_y & R_z & P_x\\
 - [Essence of linear algebra (Video Playlist)](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
 - [Learn OpenGL (Tutorial)](https://learnopengl.com/Getting-started/OpenGL)
 - [Learn Computer Graphics Using WebGL (Tutorial)](https://webgl.brown37.net/toc.html)
+
