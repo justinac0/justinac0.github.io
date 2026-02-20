@@ -1,0 +1,9 @@
+package templates
+
+templ ArticlePage(content []byte) {
+	@ArticleLayout() {
+		<article>
+                        @templ.Raw(string(content))
+		</article>
+	}
+}

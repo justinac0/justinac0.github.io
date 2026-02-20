@@ -1,0 +1,12 @@
+package templates
+
+import "justinac0.github.io/internal/page"
+
+templ HomePage(content []byte, pages page.Pages) {
+	<div>
+		@templ.Raw(string(content))
+		for _, p := range pages {
+			<a href={ p.Url }>{ p.Url }</a>
+		}
+	</div>
+}
