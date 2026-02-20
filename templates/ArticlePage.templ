@@ -1,9 +1,13 @@
 package templates
 
-templ ArticlePage(content []byte) {
-	@ArticleLayout() {
+import "justinac0.github.io/internal/page"
+
+templ ArticlePage(p page.Page) {
+	@ArticleLayout(p.Meta.Title) {
+		<a href="/">back</a>
+		<hr/>
 		<article>
-                        @templ.Raw(string(content))
+			@templ.Raw(p.HTML)
 		</article>
 	}
 }

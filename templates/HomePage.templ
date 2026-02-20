@@ -1,12 +1,22 @@
 package templates
 
-import "justinac0.github.io/internal/page"
+import (
+	"justinac0.github.io/internal/page"
+	"strings"
+)
 
-templ HomePage(content []byte, pages page.Pages) {
-	<div>
-		@templ.Raw(string(content))
+templ HomePage(home page.Page, pages page.Pages) {
+	@ArticleLayout(home.Meta.Title) {
+		@templ.Raw(string(home.HTML))
+		<h2>Portfolio</h2>
+		// <p>...</p>
+		<h2>Blogs</h2>
 		for _, p := range pages {
-			<a href={ p.Url }>{ p.Url }</a>
+			<nav>
+				if strings.Compare(p.Url, "/") != 0 {
+					<ul><p><span style="color: gray"><i>{ p.Meta.Date }</i></span> <a href={ p.Url }>{ p.Meta.Title }</a></p></ul>
+				}
+			</nav>
 		}
-	</div>
+	}
 }
