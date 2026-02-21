@@ -16,15 +16,15 @@ import (
 	"justinac0.github.io/internal/ssg"
 )
 
-//go:embed public
+//go:embed assets
 var public embed.FS
 
 func main() {
 	e := echo.New()
-	e.StaticFS("/static", echo.MustSubFS(public, "public/static"))
+	e.StaticFS("/static", echo.MustSubFS(public, "assets/static"))
 	e.Use(middleware.Recover())
 
-	BASE_DIR := "public/pages"
+	BASE_DIR := "assets/pages"
 	ssg.GenFromEmbedFS(public, BASE_DIR, e)
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)

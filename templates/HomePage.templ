@@ -1,12 +1,11 @@
 package templates
 
 import (
-	"justinac0.github.io/internal/page"
-	"justinac0.github.io/internal/portfolio"
+	"justinac0.github.io/internal/types"
 	"strings"
 )
 
-templ PortfolioItem(item portfolio.Portfolio) {
+templ PortfolioItem(item types.Portfolio) {
 	<div class="portfolio-item" style={ "position: relative;" }>
 		<img src={ item.ImageUrl }/>
 		<div class="portfolio-item-info">
@@ -19,7 +18,7 @@ templ PortfolioItem(item portfolio.Portfolio) {
 	</div>
 }
 
-templ FancyPortfolioView(left []portfolio.Portfolio, right []portfolio.Portfolio) {
+templ FancyPortfolioView(left []types.Portfolio, right []types.Portfolio) {
 	<div id="portfolio">
 		<h2>Portfolio</h2>
 		<div id="portfolio-list">
@@ -37,19 +36,19 @@ templ FancyPortfolioView(left []portfolio.Portfolio, right []portfolio.Portfolio
 	</div>
 }
 
-templ HomePage(home page.Page, pages page.Pages, work []portfolio.Portfolio) {
-	{{ rightColumn := work[len(work)/2:] }}
-	{{ leftColumn := work[:len(work)/2] }}
-	@ArticleLayout(home.Meta.Title) {
+templ HomePage(page types.Page, pages types.Pages, portfolio []types.Portfolio) {
+	{{ rightColumn := portfolio[len(portfolio)/2:] }}
+	{{ leftColumn := portfolio[:len(portfolio)/2] }}
+	@ArticleLayout(page.Meta.Title) {
 		<div id="about">
-			@templ.Raw(string(home.HTML))
+			@templ.Raw(string(page.HTML))
 		</div>
 		@FancyPortfolioView(leftColumn, rightColumn)
 		<div id="blogs">
 			<h2>Blogs</h2>
 			for _, p := range pages {
 				<nav>
-					if strings.Compare(p.Url, "/") != 0 {
+					if strings.Contains(p.Url, "blogs") {
 						<ul><p><span style="color: gray"><i>{ p.Meta.Date }</i></span> <a href={ p.Url }>{ p.Meta.Title }</a></p></ul>
 					}
 				</nav>

@@ -1,4 +1,4 @@
-package portfolio
+package types
 
 type Portfolio struct {
 	ImageUrl  string

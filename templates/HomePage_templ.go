@@ -9,12 +9,11 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
-	"justinac0.github.io/internal/page"
-	"justinac0.github.io/internal/portfolio"
+	"justinac0.github.io/internal/types"
 	"strings"
 )
 
-func PortfolioItem(item portfolio.Portfolio) templ.Component {
+func PortfolioItem(item types.Portfolio) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -42,7 +41,7 @@ func PortfolioItem(item portfolio.Portfolio) templ.Component {
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templruntime.SanitizeStyleAttributeValues("position: relative;")
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 10, Col: 58}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 9, Col: 58}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -55,7 +54,7 @@ func PortfolioItem(item portfolio.Portfolio) templ.Component {
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(item.ImageUrl)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 11, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 10, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -68,7 +67,7 @@ func PortfolioItem(item portfolio.Portfolio) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(item.Title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 13, Col: 45}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 12, Col: 45}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -81,7 +80,7 @@ func PortfolioItem(item portfolio.Portfolio) templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(item.About)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 15, Col: 16}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 14, Col: 16}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -94,7 +93,7 @@ func PortfolioItem(item portfolio.Portfolio) templ.Component {
 		var templ_7745c5c3_Var6 templ.SafeURL
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinURLErrs(item.GithubUrl)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 17, Col: 43}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 16, Col: 43}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -108,7 +107,7 @@ func PortfolioItem(item portfolio.Portfolio) templ.Component {
 	})
 }
 
-func FancyPortfolioView(left []portfolio.Portfolio, right []portfolio.Portfolio) templ.Component {
+func FancyPortfolioView(left []types.Portfolio, right []types.Portfolio) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -157,7 +156,7 @@ func FancyPortfolioView(left []portfolio.Portfolio, right []portfolio.Portfolio)
 	})
 }
 
-func HomePage(home page.Page, pages page.Pages, work []portfolio.Portfolio) templ.Component {
+func HomePage(page types.Page, pages types.Pages, portfolio []types.Portfolio) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -178,8 +177,8 @@ func HomePage(home page.Page, pages page.Pages, work []portfolio.Portfolio) temp
 			templ_7745c5c3_Var8 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		rightColumn := work[len(work)/2:]
-		leftColumn := work[:len(work)/2]
+		rightColumn := portfolio[len(portfolio)/2:]
+		leftColumn := portfolio[:len(portfolio)/2]
 		templ_7745c5c3_Var9 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -196,7 +195,7 @@ func HomePage(home page.Page, pages page.Pages, work []portfolio.Portfolio) temp
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.Raw(string(home.HTML)).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = templ.Raw(string(page.HTML)).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -217,7 +216,7 @@ func HomePage(home page.Page, pages page.Pages, work []portfolio.Portfolio) temp
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				if strings.Compare(p.Url, "/") != 0 {
+				if strings.Contains(p.Url, "blogs") {
 					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "<ul><p><span style=\"color: gray\"><i>")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
@@ -225,7 +224,7 @@ func HomePage(home page.Page, pages page.Pages, work []portfolio.Portfolio) temp
 					var templ_7745c5c3_Var10 string
 					templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(p.Meta.Date)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 53, Col: 55}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 52, Col: 55}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 					if templ_7745c5c3_Err != nil {
@@ -238,7 +237,7 @@ func HomePage(home page.Page, pages page.Pages, work []portfolio.Portfolio) temp
 					var templ_7745c5c3_Var11 templ.SafeURL
 					templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinURLErrs(p.Url)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 53, Col: 84}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 52, Col: 84}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 					if templ_7745c5c3_Err != nil {
@@ -251,7 +250,7 @@ func HomePage(home page.Page, pages page.Pages, work []portfolio.Portfolio) temp
 					var templ_7745c5c3_Var12 string
 					templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(p.Meta.Title)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 53, Col: 101}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/HomePage.templ`, Line: 52, Col: 101}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 					if templ_7745c5c3_Err != nil {
@@ -273,7 +272,7 @@ func HomePage(home page.Page, pages page.Pages, work []portfolio.Portfolio) temp
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = ArticleLayout(home.Meta.Title).Render(templ.WithChildren(ctx, templ_7745c5c3_Var9), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = ArticleLayout(page.Meta.Title).Render(templ.WithChildren(ctx, templ_7745c5c3_Var9), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

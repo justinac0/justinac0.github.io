@@ -42,7 +42,7 @@ func ArticleLayout(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap\" rel=\"stylesheet\"><link rel=\"stylesheet\" href=\"/static/css/global.css\"><body><main><header style=\"text-align: right; width: 100%;\"><nav style=\"display: flex; gap: 2rem; justify-content: left;\"><ul><a href=\"/#about\">about</a></ul><ul><a href=\"/#portfolio\">portfolio</a></ul><ul><a href=\"/#blogs\">blogs</a></ul></nav></header>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap\" rel=\"stylesheet\"><link rel=\"stylesheet\" href=\"./static/css/global.css\"><body><main><header style=\"text-align: right; width: 100%;\"><nav style=\"display: flex; gap: 2rem; justify-content: left;\"><ul><a href=\"/#about\">about</a></ul><ul><a href=\"/#portfolio\">portfolio</a></ul><ul><a href=\"/#blogs\">blogs</a></ul></nav></header>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -1,4 +1,4 @@
-package page
+package types
 
 type PageMeta struct {
 	Title  string `yaml:title`

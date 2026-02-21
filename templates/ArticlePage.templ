@@ -1,13 +1,13 @@
 package templates
 
-import "justinac0.github.io/internal/page"
+import "justinac0.github.io/internal/types"
 
-templ ArticlePage(p page.Page) {
-	@ArticleLayout(p.Meta.Title) {
+templ ArticlePage(page types.Page) {
+	@ArticleLayout(page.Meta.Title) {
 		<hr/>
 		<a href="/">back</a>
 		<article>
-			@templ.Raw(p.HTML)
+			@templ.Raw(page.HTML)
 		</article>
 	}
 }
