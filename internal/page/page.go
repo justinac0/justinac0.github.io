@@ -3,6 +3,7 @@ package page
 type PageMeta struct {
 	Title  string `yaml:title`
 	Author string `yaml:author`
+	Slug   string `yaml:slug`
 	Date   string `yaml:date`
 }
 

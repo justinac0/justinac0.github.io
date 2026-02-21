@@ -43,7 +43,7 @@ func ArticlePage(p page.Page) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<a href=\"/\">back</a><hr><article>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<hr><a href=\"/\">back</a><article>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

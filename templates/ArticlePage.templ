@@ -4,8 +4,8 @@ import "justinac0.github.io/internal/page"
 
 templ ArticlePage(p page.Page) {
 	@ArticleLayout(p.Meta.Title) {
-		<a href="/">back</a>
 		<hr/>
+		<a href="/">back</a>
 		<article>
 			@templ.Raw(p.HTML)
 		</article>

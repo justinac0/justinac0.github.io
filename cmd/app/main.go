@@ -4,6 +4,7 @@ import (
 	"context"
 	"embed"
 	"errors"
+	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
@@ -31,6 +32,7 @@ func main() {
 
 	s := http.Server{Addr: ":3000", Handler: e}
 	go func() {
+		fmt.Println("starting echo server")
 		if err := s.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			e.Logger.Error("failed to start server", "error", err)
 		}
