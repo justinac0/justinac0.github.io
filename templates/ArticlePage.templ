@@ -1,0 +1,17 @@
+package templates
+
+import "justinac0.github.io/internal/types"
+
+templ ArticlePage(relPath string, page types.Page) {
+	@ArticleLayout(relPath, page.Meta.Title) {
+		<hr/>
+		if len(relPath) > 0 {
+			<a href={ relPath + "index.html" }>back</a>
+		} else {
+			<a href="/">back</a>
+		}
+		<article>
+			@templ.Raw(page.HTML)
+		</article>
+	}
+}

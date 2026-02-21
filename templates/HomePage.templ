@@ -1,0 +1,67 @@
+package templates
+
+import (
+	"justinac0.github.io/internal/types"
+	"strings"
+)
+
+templ PortfolioItem(item types.Portfolio) {
+	<div class="portfolio-item" style={ "position: relative;" }>
+		<img src={ item.ImageUrl }/>
+		<div class="portfolio-item-info">
+			<h3 style="margin-bottom: 0;">{ item.Title }</h3>
+			<p class="portfolio-item-about">
+				{ item.About }
+			</p>
+			<a target="_blank" href={ item.GithubUrl }>github</a>
+		</div>
+	</div>
+}
+
+templ FancyPortfolioView(left []types.Portfolio, right []types.Portfolio) {
+	<div id="portfolio">
+		<h2>Portfolio</h2>
+		<div id="portfolio-list">
+			<div>
+				for _, w := range(left) {
+					@PortfolioItem(w)
+				}
+			</div>
+			<div>
+				for _, w := range(right) {
+					@PortfolioItem(w)
+				}
+			</div>
+		</div>
+	</div>
+}
+
+templ HomePage(relPath string, page types.Page, pages types.Pages, portfolio []types.Portfolio) {
+	{{ rightColumn := portfolio[len(portfolio)/2:] }}
+	{{ leftColumn := portfolio[:len(portfolio)/2] }}
+	@ArticleLayout(relPath, page.Meta.Title) {
+		<div id="about">
+			@templ.Raw(string(page.HTML))
+		</div>
+		@FancyPortfolioView(leftColumn, rightColumn)
+		<div id="blogs">
+			<h2>Blogs</h2>
+			for _, p := range pages {
+				<nav>
+					if strings.Contains(p.Url, "blogs") {
+						<ul>
+							<p>
+								<span style="color: gray"><i>{ p.Meta.Date }</i></span>
+								if len(relPath) > 0 {
+									<a href={ p.Url }>{ p.Meta.Title }</a>
+								} else {
+									<a href={ p.Url + ".html" }>{ p.Meta.Title }</a>
+								}
+							</p>
+						</ul>
+					}
+				</nav>
+			}
+		</div>
+	}
+}

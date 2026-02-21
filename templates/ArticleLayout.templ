@@ -1,0 +1,33 @@
+package templates
+
+import "fmt"
+
+templ ArticleLayout(relPath string, title string) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>JC - { title }</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com"/>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+		<link rel="stylesheet" href={ fmt.Sprintf("%sstatic/css/global.css", relPath) }/>
+		<body>
+			<main>
+				<header style="text-align: right; width: 100%;">
+					<nav style="display: flex; gap: 2rem; justify-content: left;">
+						<ul><a href={ fmt.Sprintf("%s#about", relPath) }>about</a></ul>
+						<ul><a href={ fmt.Sprintf("%s#portfolio", relPath) }>portfolio</a></ul>
+						<ul><a href={ fmt.Sprintf("%s#blogs", relPath) }>blogs</a></ul>
+					</nav>
+				</header>
+				{ children... }
+			</main>
+			<br/>
+			<br/>
+			<footer style="text-align: center; color: gray;">
+				<p>Copyright (c) 2026</p>
+			</footer>
+		</body>
+	</html>
+}
