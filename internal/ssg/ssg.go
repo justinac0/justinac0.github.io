@@ -5,19 +5,22 @@ import (
 	"context"
 	"embed"
 	"fmt"
-	"net/http"
 	"os"
 	"strings"
 
 	"github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/html"
 	"github.com/gomarkdown/markdown/parser"
-	"github.com/labstack/echo/v5"
 	"go.yaml.in/yaml/v3"
-	"justinac0.github.io/internal"
 	"justinac0.github.io/internal/types"
 	"justinac0.github.io/templates"
 )
+
+// NOTE: static site generator
+type SSG struct {
+	RunWebServer bool
+	ShouldBuild  bool
+}
 
 // NOTE: static site generation
 
@@ -119,8 +122,13 @@ func writeStaticFiles(p types.Page, pages types.Pages, work []types.Portfolio) {
 
 	// NOTE: create dirs if not exists
 	last := ""
-	for _, d := range dirs {
+	upDir := ""
+	for i, d := range dirs {
 		last += d + "/"
+		if i > 0 {
+			upDir += "../"
+		}
+
 		if _, err := os.Stat(last); os.IsNotExist(err) {
 			err := os.Mkdir(last, 0777)
 			if err != nil {
@@ -132,12 +140,12 @@ func writeStaticFiles(p types.Page, pages types.Pages, work []types.Portfolio) {
 	// NOTE: write html
 	var buf bytes.Buffer
 	if isIndex == false {
-		err := templates.HomePage(p, pages, work).Render(context.Background(), &buf)
+		err := templates.HomePage(upDir, p, pages, work).Render(context.Background(), &buf)
 		if err != nil {
 			panic(err)
 		}
 	} else {
-		err := templates.ArticlePage(p).Render(context.Background(), &buf)
+		err := templates.ArticlePage(upDir, p).Render(context.Background(), &buf)
 		if err != nil {
 			panic(err)
 		}
@@ -147,9 +155,9 @@ func writeStaticFiles(p types.Page, pages types.Pages, work []types.Portfolio) {
 	if err != nil {
 		panic(err)
 	}
-
 }
-func GenFromEmbedFS(mount embed.FS, base string, e *echo.Echo) {
+
+func GenFromEmbedFS(mount embed.FS, base string) {
 	var pages types.Pages = make(types.Pages)
 	recursiveCachePage(mount, base, base, pages)
 
@@ -193,13 +201,8 @@ func GenFromEmbedFS(mount embed.FS, base string, e *echo.Echo) {
 
 	for _, p := range pages {
 		writeStaticFiles(p, pages, work)
-
-		e.GET(p.Url, func(c *echo.Context) error {
-			if strings.Compare(p.Url, "") != 0 {
-				return internal.RenderTempl(c, http.StatusOK, templates.ArticlePage(p))
-			} else {
-				return internal.RenderTempl(c, http.StatusOK, templates.HomePage(p, pages, work))
-			}
-		})
 	}
+
+	// NOTE: copy static files
+	os.CopyFS("dist/static", os.DirFS("cmd/app/assets/static"))
 }

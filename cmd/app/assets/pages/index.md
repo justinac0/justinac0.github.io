@@ -3,8 +3,7 @@ title: Homepage
 author: Justin
 ---
 
-# Justin Chappell
-## Software Developer
+# Justin C. - Software Developer
 
 Hi! my name is Justin and I work in RnD electronics as a software developer.
 

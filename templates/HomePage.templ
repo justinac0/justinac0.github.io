@@ -36,10 +36,10 @@ templ FancyPortfolioView(left []types.Portfolio, right []types.Portfolio) {
 	</div>
 }
 
-templ HomePage(page types.Page, pages types.Pages, portfolio []types.Portfolio) {
+templ HomePage(relPath string, page types.Page, pages types.Pages, portfolio []types.Portfolio) {
 	{{ rightColumn := portfolio[len(portfolio)/2:] }}
 	{{ leftColumn := portfolio[:len(portfolio)/2] }}
-	@ArticleLayout(page.Meta.Title) {
+	@ArticleLayout(relPath, page.Meta.Title) {
 		<div id="about">
 			@templ.Raw(string(page.HTML))
 		</div>
@@ -49,7 +49,16 @@ templ HomePage(page types.Page, pages types.Pages, portfolio []types.Portfolio) 
 			for _, p := range pages {
 				<nav>
 					if strings.Contains(p.Url, "blogs") {
-						<ul><p><span style="color: gray"><i>{ p.Meta.Date }</i></span> <a href={ p.Url }>{ p.Meta.Title }</a></p></ul>
+						<ul>
+							<p>
+								<span style="color: gray"><i>{ p.Meta.Date }</i></span>
+								if len(relPath) > 0 {
+									<a href={ p.Url }>{ p.Meta.Title }</a>
+								} else {
+									<a href={ p.Url + ".html" }>{ p.Meta.Title }</a>
+								}
+							</p>
+						</ul>
 					}
 				</nav>
 			}
