@@ -1,0 +1,87 @@
+:root {
+    --bg-color: #1a1a25;
+    --fg-color: #f3f3f3;
+    --s-color: #333345;
+    --border-radius: 5px;
+}
+body {
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    line-height: 1.6;
+    padding: 0;
+    padding-bottom: 4rem;
+    margin: 0;
+    margin-top: 6rem;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+a {
+    color: cornflowerblue;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+
+pre {
+    /* TODO(justin): make this color a var :) */
+    background-color: #333345;
+    padding: 1rem;
+}
+
+blockquote {
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+    color: gray;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+hr {
+    border: 0;
+    border-top: 1px;
+    border-style: solid;
+    border-color: gray;
+}
+
+#portfolio-list {
+    display: grid;
+    gap: 1ch;
+    grid-template-columns: 1fr 1fr;
+}
+
+.portfolio-item {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 1ch;
+    border-radius: var(--border-radius);
+}
+
+.portfolio-item-info {
+    text-align: center;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    flex-grow: 1;
+    backdrop-filter: blur(10px);
+    background-color: var(--s-color);
+    border-radius: var(--border-radius);
+    padding-bottom: 1ch;
+}
+
+img {
+    border-radius: 5px;
+}
