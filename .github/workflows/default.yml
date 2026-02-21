@@ -1,4 +1,4 @@
-name: GitHub Pages
+name: GitHub Pages (Go)
 
 on:
   push:
@@ -8,35 +8,34 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - name: Setup Go
+        uses: actions/setup-go@v5
         with:
-          node-version: '23.x'
+          go-version: "1.25"
 
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Install templ
+        run: go install github.com/a-h/templ/cmd/templ@latest
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+      - name: Generate templ files
+        run: go tool templ generate
 
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - run: echo justinchappell.com > ./dist/CNAME
-      - run: echo www.justinchappell.com >> ./dist/CNAME
+      - name: Build static site
+        run: go run cmd/app/main.go
 
-      - name: Deploy
+      - name: Add CNAME
+        run: |
+          echo justinchappell.com > ./dist/CNAME
+          echo www.justinchappell.com >> ./dist/CNAME
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
