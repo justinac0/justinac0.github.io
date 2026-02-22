@@ -16,14 +16,7 @@ import (
 	"justinac0.github.io/templates"
 )
 
-// NOTE: static site generator
-type SSG struct {
-	RunWebServer bool
-	ShouldBuild  bool
-}
-
 // NOTE: static site generation
-
 func parseFrontMatter(content []byte) (types.PageMeta, []byte, error) {
 	var meta types.PageMeta
 
@@ -107,6 +100,7 @@ func recursiveCachePage(mount embed.FS, absoluteBaseUrl string, baseDirUrl strin
 
 func writeStaticFiles(p types.Page, pages types.Pages, work []types.Portfolio) {
 	BUILD_DIR := "dist/"
+
 	// NOTE: file name resolution
 	var path string = BUILD_DIR + p.Url
 	var isIndex bool = false
@@ -199,6 +193,7 @@ func GenFromEmbedFS(mount embed.FS, base string) {
 		GithubUrl: "https://github.com/justinac0/HookLineSinker",
 	})
 
+	os.RemoveAll("./dist")
 	for _, p := range pages {
 		writeStaticFiles(p, pages, work)
 	}

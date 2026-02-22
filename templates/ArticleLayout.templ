@@ -14,16 +14,17 @@ templ ArticleLayout(relPath string, title string) {
 		<link rel="stylesheet" href={ fmt.Sprintf("%sstatic/css/global.css", relPath) }/>
 		<body>
 			<main>
-				<header style="text-align: right; width: 100%;">
-					<nav style="display: flex; gap: 2rem; justify-content: left;">
-						<ul><a href={ fmt.Sprintf("%s#about", relPath) }>about</a></ul>
-						<ul><a href={ fmt.Sprintf("%s#portfolio", relPath) }>portfolio</a></ul>
-						<ul><a href={ fmt.Sprintf("%s#blogs", relPath) }>blogs</a></ul>
-					</nav>
-				</header>
+				if len(relPath) == 0 {
+					<header style="text-align: right; width: 100%;">
+						<nav style="display: flex; gap: 2rem; justify-content: left;">
+							<ul><a href={ fmt.Sprintf("%s#about", relPath) }>about</a></ul>
+							<ul><a href={ fmt.Sprintf("%s#portfolio", relPath) }>portfolio</a></ul>
+							<ul><a href={ fmt.Sprintf("%s#blogs", relPath) }>blogs</a></ul>
+						</nav>
+					</header>
+				}
 				{ children... }
 			</main>
-			<br/>
 			<br/>
 			<footer style="text-align: center; color: gray;">
 				<p>Copyright (c) 2026</p>

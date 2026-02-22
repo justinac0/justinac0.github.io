@@ -4,15 +4,50 @@
     --s-color: #333345;
     --border-radius: 5px;
 }
+
 body {
+    padding: 1rem;
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;
     background-color: var(--bg-color);
     color: var(--fg-color);
     line-height: 1.6;
-    padding: 0;
-    padding-bottom: 4rem;
     margin: 0;
-    margin-top: 6rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--s-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+thead {
+    background-color: #2a2a3a;
+}
+
+th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: var(--fg-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+td {
+    padding: 0.75rem 1rem;
+    color: var(--fg-color);
+    font-size: 0.95rem;
+}
+
+tbody tr {
+    border-top: 1px solid #2a2a3a;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #252535;
 }
 
 main {
