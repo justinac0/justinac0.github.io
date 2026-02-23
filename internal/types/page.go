@@ -1,8 +1,10 @@
 package types
 
+// TODO(justin): rename to blog***
 type PageMeta struct {
 	Title  string `yaml:title`
 	Author string `yaml:author`
+	Draft  bool   `yaml:draft`
 	Slug   string `yaml:slug`
 	Date   string `yaml:date`
 }
@@ -20,4 +22,3 @@ type Style struct {
 
 type Styles map[string]Style
 type Pages map[string]Page
-

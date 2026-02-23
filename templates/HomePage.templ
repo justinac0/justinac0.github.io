@@ -20,38 +20,30 @@ templ PortfolioItem(item types.Portfolio) {
 	</div>
 }
 
-templ FancyPortfolioView(left []types.Portfolio, right []types.Portfolio) {
+templ FancyPortfolioView(items []types.Portfolio) {
 	<div id="portfolio">
 		<h1>Portfolio</h1>
-		<div id="portfolio-list">
-			<div>
-				for _, w := range(left) {
-					@PortfolioItem(w)
-				}
-			</div>
-			<div>
-				for _, w := range(right) {
-					@PortfolioItem(w)
-				}
-			</div>
+		<div class="portfolio-list">
+			for _, w := range(items) {
+				@PortfolioItem(w)
+			}
 		</div>
 	</div>
 }
 
 templ HomePage(relPath string, page types.Page, pages types.Pages, portfolio []types.Portfolio) {
-	{{ rightColumn := portfolio[len(portfolio)/2:] }}
-	{{ leftColumn := portfolio[:len(portfolio)/2] }}
 	@ArticleLayout(relPath, page.Meta.Title) {
 		<div id="about">
 			@templ.Raw(string(page.HTML))
 		</div>
 		<br/>
-		@FancyPortfolioView(leftColumn, rightColumn)
+		@FancyPortfolioView(portfolio)
 		<div id="blogs">
 			<h1>Blogs</h1>
+			<p>WIP...</p>
 			for _, p := range pages {
 				<nav>
-					if strings.Contains(p.Url, "blogs") {
+					if strings.Contains(p.Url, "blogs") && p.Meta.Draft == false {
 						<ul>
 							<p>
 								<span style="color: gray"><i>{ p.Meta.Date }</i></span>
