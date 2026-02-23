@@ -13,4 +13,11 @@ type Page struct {
 	HTML string
 }
 
+type Style struct {
+	Url string
+	Css string
+}
+
+type Styles map[string]Style
 type Pages map[string]Page
+

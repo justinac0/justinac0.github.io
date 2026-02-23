@@ -8,62 +8,14 @@ import (
 	"os"
 	"strings"
 
-	"github.com/gomarkdown/markdown"
-	"github.com/gomarkdown/markdown/html"
-	"github.com/gomarkdown/markdown/parser"
-	"go.yaml.in/yaml/v3"
+	"github.com/tdewolff/minify/v2"
+	"github.com/tdewolff/minify/v2/html"
+	"justinac0.github.io/internal/md"
 	"justinac0.github.io/internal/types"
 	"justinac0.github.io/templates"
 )
 
-// NOTE: static site generation
-func parseFrontMatter(content []byte) (types.PageMeta, []byte, error) {
-	var meta types.PageMeta
-
-	str := string(content)
-
-	if !strings.HasPrefix(str, "---") {
-		return meta, content, nil
-	}
-
-	parts := strings.SplitN(str, "---", 3)
-	if len(parts) < 3 {
-		return meta, content, nil
-	}
-
-	err := yaml.Unmarshal([]byte(parts[1]), &meta)
-	if err != nil {
-		return meta, nil, err
-	}
-
-	body := []byte(parts[2])
-	return meta, body, nil
-}
-
-func mdToHTML(mount embed.FS, filePath string, p *types.Page) {
-	file, err := mount.ReadFile(filePath)
-	if err != nil {
-		panic(err)
-	}
-
-	meta, body, err := parseFrontMatter(file)
-	if err != nil {
-		panic(err)
-	}
-
-	extensions := parser.CommonExtensions | parser.AutoHeadingIDs | parser.NoEmptyLineBeforeBlock
-	parse := parser.NewWithExtensions(extensions)
-	doc := parse.Parse(body)
-
-	htmlFlags := html.CommonFlags | html.HrefTargetBlank
-	opts := html.RendererOptions{Flags: htmlFlags}
-	renderer := html.NewRenderer(opts)
-
-	p.HTML = string(markdown.Render(doc, renderer))
-	p.Meta = meta
-}
-
-func recursiveCachePage(mount embed.FS, absoluteBaseUrl string, baseDirUrl string, pages types.Pages) {
+func recursiveCachePage(mount embed.FS, absoluteBaseUrl string, baseDirUrl string, pages types.Pages, styles types.Styles) {
 	dir, err := mount.ReadDir(baseDirUrl)
 	if err != nil {
 		panic(err)
@@ -71,20 +23,22 @@ func recursiveCachePage(mount embed.FS, absoluteBaseUrl string, baseDirUrl strin
 
 	for _, item := range dir {
 		if item.IsDir() {
-			recursiveCachePage(mount, absoluteBaseUrl, fmt.Sprintf("%s/%s", baseDirUrl, item.Name()), pages)
+			recursiveCachePage(mount, absoluteBaseUrl, fmt.Sprintf("%s/%s", baseDirUrl, item.Name()), pages, styles)
 		} else {
-			MD_EXTENSION := ".md"
-			if strings.Contains(item.Name(), MD_EXTENSION) {
+			MD_EXT := ".md"
+			CSS_EXT := ".css"
+
+			name := item.Name()
+			fullUrl := fmt.Sprintf("%s/%s", baseDirUrl, name)
+
+			if strings.Contains(item.Name(), MD_EXT) {
 				var p types.Page
 
-				name := item.Name()
-				fullUrl := fmt.Sprintf("%s/%s", baseDirUrl, name)
-
-				start := len(absoluteBaseUrl)           // skip the absolute base url
-				end := len(fullUrl) - len(MD_EXTENSION) // ignore the md ext.
+				start := len(absoluteBaseUrl)     // skip the absolute base url
+				end := len(fullUrl) - len(MD_EXT) // ignore the md ext.
 				relUrl := fullUrl[start:end]
 
-				mdToHTML(mount, fullUrl, &p)
+				md.ToHTML(mount, fullUrl, &p)
 
 				if strings.Compare(relUrl, "/index") != 0 {
 					p.Url = relUrl[1:]
@@ -93,6 +47,17 @@ func recursiveCachePage(mount embed.FS, absoluteBaseUrl string, baseDirUrl strin
 				}
 
 				pages[p.Url] = p
+			}
+
+			if strings.Contains(item.Name(), CSS_EXT) {
+				var s types.Style
+
+				start := len(absoluteBaseUrl)      // skip the absolute base url
+				end := len(fullUrl) - len(CSS_EXT) // ignore the md ext.
+				relUrl := fullUrl[start:end]
+
+				s.Url = relUrl[1:]
+				styles[s.Url] = s
 			}
 		}
 	}
@@ -145,7 +110,20 @@ func writeStaticFiles(p types.Page, pages types.Pages, portfolio []types.Portfol
 		}
 	}
 
-	err := os.WriteFile(path, buf.Bytes(), 0777)
+	// NOTE: minify html
+	m := minify.New()
+	m.Add("text/html", &html.Minifier{
+		KeepDocumentTags: false,
+		KeepQuotes:       false,
+	})
+
+	var out bytes.Buffer
+	err := m.Minify("text/html", &out, bytes.NewReader(buf.Bytes()))
+	if err != nil {
+		panic(err)
+	}
+
+	err = os.WriteFile(path, out.Bytes(), 0777)
 	if err != nil {
 		panic(err)
 	}
@@ -153,14 +131,16 @@ func writeStaticFiles(p types.Page, pages types.Pages, portfolio []types.Portfol
 
 func GenFromEmbedFS(mount embed.FS, base string) {
 	var pages types.Pages = make(types.Pages)
-	recursiveCachePage(mount, base, base, pages)
+	var styles types.Styles = make(types.Styles)
+
+	recursiveCachePage(mount, base, base, pages, styles)
 
 	var portfolio []types.Portfolio
 	portfolio = append(portfolio, types.Portfolio{
-		ImageUrl: "./static/img/collagen.gif",
+		ImageUrl:  "./static/img/collagen.gif",
 		MdUrl:     "./portfolio/diffuse.html",
-		Title:    "Physics Capstone",
-		About:    "For my final year physics capstone I developed a Monte Carlo simulation of water diffision in articular cartilage. Data collected from these simulations can give insight into the morphology of cartilage fibers. The main simulation was written in python and real-time visualisations where written in C.",
+		Title:     "Physics Capstone",
+		About:     "For my final year physics capstone I developed a Monte Carlo simulation of water diffision in articular cartilage. Data collected from these simulations can give insight into the morphology of cartilage fibers. The main simulation was written in python and real-time visualisations where written in C.",
 		GithubUrl: "https://github.com/justinac0/BulkWaterDiffuse",
 	})
 
@@ -172,9 +152,9 @@ func GenFromEmbedFS(mount embed.FS, base string) {
 		GithubUrl: "https://github.com/justinac0/HookLineSinker",
 	})
 	portfolio = append(portfolio, types.Portfolio{
-		ImageUrl: "./static/img/ascii.png",
-		Title:    "Ascii Art Generator",
-		About:    "Simple image processing tool for turning images into ascii art (python).",
+		ImageUrl:  "./static/img/ascii.png",
+		Title:     "Ascii Art Generator",
+		About:     "Simple image processing tool for turning images into ascii art (python).",
 		GithubUrl: "https://github.com/justinac0/image-ascii",
 	})
 
