@@ -1,8 +1,15 @@
 :root {
     --bg-color: #1a1a25;
     --fg-color: #f3f3f3;
+    --t-color: #2a2a3a;
     --s-color: #333345;
+    --link-color: cornflowerblue;
     --border-radius: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+        padding: 0;
 }
 
 body {
@@ -10,7 +17,7 @@ body {
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;
     background-color: var(--bg-color);
     color: var(--fg-color);
-    line-height: 1.6;
+    line-height: 1.5;
     margin: 0;
 }
 
@@ -23,27 +30,23 @@ table {
 }
 
 thead {
-    background-color: #2a2a3a;
+    background-color: var(--t-color);
 }
 
 th {
     text-align: left;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem;
     font-weight: 600;
     color: var(--fg-color);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
 }
 
 td {
-    padding: 0.75rem 1rem;
     color: var(--fg-color);
-    font-size: 0.95rem;
+    padding: 0.75em;
 }
 
 tbody tr {
-    border-top: 1px solid #2a2a3a;
+    border-top: 1px solid var(--t-color);
 }
 
 tbody tr:nth-child(even) {
@@ -56,10 +59,17 @@ main {
 }
 
 a {
-    color: cornflowerblue;
+    color: var(--link-color);
     text-decoration: none;
     text-transform: uppercase;
 }
+
+a > * {
+    text-decoration: initial;
+    text-transform: initial;
+    color: var(--fg-color);
+}
+
 img {
     width: 100%;
     height: auto;
@@ -92,31 +102,33 @@ hr {
 
 #portfolio-list {
     display: grid;
-    gap: 1ch;
     grid-template-columns: 1fr 1fr;
+    gap: 1ch;
 }
 
 .portfolio-item {
+    text-align: left;
     position: absolute;
     bottom: 0;
     left: 0;
     z-index: 100;
-    padding: 1ch;
     border-radius: var(--border-radius);
+    margin-bottom: 1ch;
 }
 
 .portfolio-item-info {
-    text-align: center;
     display: flex;
-    width: 100%;
     flex-direction: column;
     flex-grow: 1;
-    backdrop-filter: blur(10px);
     background-color: var(--s-color);
     border-radius: var(--border-radius);
-    padding-bottom: 1ch;
+    padding: 2rem;
 }
 
 img {
     border-radius: 5px;
+}
+
+li {
+    margin-left: 1rem;
 }

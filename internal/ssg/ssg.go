@@ -98,7 +98,7 @@ func recursiveCachePage(mount embed.FS, absoluteBaseUrl string, baseDirUrl strin
 	}
 }
 
-func writeStaticFiles(p types.Page, pages types.Pages, work []types.Portfolio) {
+func writeStaticFiles(p types.Page, pages types.Pages, portfolio []types.Portfolio) {
 	BUILD_DIR := "dist/"
 
 	// NOTE: file name resolution
@@ -134,7 +134,7 @@ func writeStaticFiles(p types.Page, pages types.Pages, work []types.Portfolio) {
 	// NOTE: write html
 	var buf bytes.Buffer
 	if isIndex == false {
-		err := templates.HomePage(upDir, p, pages, work).Render(context.Background(), &buf)
+		err := templates.HomePage(upDir, p, pages, portfolio).Render(context.Background(), &buf)
 		if err != nil {
 			panic(err)
 		}
@@ -155,47 +155,32 @@ func GenFromEmbedFS(mount embed.FS, base string) {
 	var pages types.Pages = make(types.Pages)
 	recursiveCachePage(mount, base, base, pages)
 
-	var work []types.Portfolio
-	work = append(work, types.Portfolio{
-		ImageUrl: "./static/img/ascii.png",
-		Title:    "Ascii Art Generator",
-		About:    "Simple image processing tool for turning images into ascii art (python).",
+	var portfolio []types.Portfolio
+	portfolio = append(portfolio, types.Portfolio{
+		ImageUrl: "./static/img/collagen.gif",
+		MdUrl:     "./portfolio/diffuse.html",
+		Title:    "Physics Capstone",
+		About:    "For my final year physics capstone I developed a Monte Carlo simulation of water diffision in articular cartilage. Data collected from these simulations can give insight into the morphology of cartilage fibers. The main simulation was written in python and real-time visualisations where written in C.",
+		GithubUrl: "https://github.com/justinac0/BulkWaterDiffuse",
 	})
-	work = append(work, types.Portfolio{
-		ImageUrl: "./static/img/monte_carlo.png",
-		Title:    "Physics Capstone (Monte Carlo)",
-		About:    "3D simulation of water diffusion in articular cartilage (python).",
-	})
-	work = append(work, types.Portfolio{
-		ImageUrl: "./static/img/monte_carlo.png",
-		Title:    "Physics Capstone (Monte Carlo)",
-		About:    "3D simulation of water diffusion in articular cartilage (python).",
-	})
-	work = append(work, types.Portfolio{
-		ImageUrl: "./static/img/ascii.png",
-		Title:    "Ascii Art Generator",
-		About:    "Simple image processing tool for turning images into ascii art (python).",
-	})
-	work = append(work, types.Portfolio{
-		ImageUrl: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F24ai.tech%2Fen%2Fwp-content%2Fuploads%2Fsites%2F3%2F2023%2F10%2F01_product_1_sdelat-kvadratnym-2-scaled.jpg&f=1&nofb=1&ipt=ba7b1e29f5405a4c31c3e9c0f8afe66f0b6a49b1b32672d8cfe95584eede45cb",
-		Title:    "Fish",
-		About:    "Cool fish",
-	})
-	work = append(work, types.Portfolio{
-		ImageUrl: "./static/img/ascii.png",
-		Title:    "Ascii Art Generator",
-		About:    "Simple image processing tool for turning images into ascii art (python).",
-	})
-	work = append(work, types.Portfolio{
+
+	portfolio = append(portfolio, types.Portfolio{
 		ImageUrl:  "./static/img/hackathon.png",
+		MdUrl:     "./portfolio/hook-line-sinker.html",
 		Title:     "Hackathon Educational Game",
-		About:     "...",
+		About:     "<span>Hook Line Sinker is a retro fishing game with a focus on education, a retro re-imagining of a gamified future of education. Built for the</span> <a href='https://www.codenetwork.co/'>2025 Code Network Hackathon</a>",
 		GithubUrl: "https://github.com/justinac0/HookLineSinker",
+	})
+	portfolio = append(portfolio, types.Portfolio{
+		ImageUrl: "./static/img/ascii.png",
+		Title:    "Ascii Art Generator",
+		About:    "Simple image processing tool for turning images into ascii art (python).",
+		GithubUrl: "https://github.com/justinac0/image-ascii",
 	})
 
 	os.RemoveAll("./dist")
 	for _, p := range pages {
-		writeStaticFiles(p, pages, work)
+		writeStaticFiles(p, pages, portfolio)
 	}
 
 	// NOTE: copy static files
