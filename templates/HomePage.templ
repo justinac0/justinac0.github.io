@@ -13,9 +13,11 @@ templ PortfolioItem(item types.Portfolio) {
 		<div class="portfolio-item-info">
 			<h3 style="margin: 0;">{ item.Title }</h3>
 			@templ.Raw(item.About)
-			<br/>
-			<a style="z-index:100;" target="_blank" href={ item.GithubUrl }>github</a>
 		</div>
+		if len(item.MdUrl) > 0 {
+			<a href={ item.MdUrl } class="stretched-link"></a>
+		}
+                <div class="portfolio-dim"/>
 	</div>
 }
 
@@ -39,17 +41,16 @@ templ HomePage(relPath string, page types.Page, pages types.Pages, portfolio []t
 		@FancyPortfolioView(portfolio)
 		<div id="blogs">
 			<h1>Blogs</h1>
-			<p>WIP...</p>
 			for _, p := range pages {
 				<nav>
-					if strings.Contains(p.Url, "blogs") && p.Meta.Draft == false {
+					if strings.Contains(p.Url, "blogs") {
 						<ul>
 							<p>
 								<span style="color: gray"><i>{ p.Meta.Date }</i></span>
 								if len(relPath) > 0 {
-									<a href={ p.Url }>{ p.Meta.Title }</a>
+									{ " " }<a href={ p.Url }>{ p.Meta.Title }</a>
 								} else {
-									<a href={ p.Url + ".html" }>{ p.Meta.Title }</a>
+									{ " " }<a href={ p.Url + ".html" }>{ p.Meta.Title }</a>
 								}
 							</p>
 						</ul>
