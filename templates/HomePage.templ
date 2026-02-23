@@ -20,18 +20,18 @@ templ PortfolioItem(item types.Portfolio) {
 
 templ PortfolioItemWrapper(item types.Portfolio) {
 	if len(item.MdUrl) > 0 {
-	<a href={ item.MdUrl }>
-                        @PortfolioItem(item)
-                </a>
+		<a href={ item.MdUrl }>
+			@PortfolioItem(item)
+		</a>
 	} else {
-                @PortfolioItem(item)
-        }
+		@PortfolioItem(item)
+	}
 }
 
 templ FancyPortfolioView(left []types.Portfolio, right []types.Portfolio) {
 	<div id="portfolio">
-		<h2>Portfolio</h2>
-                <p style="color: gray;">(click on image to view extended write up)</p>
+		<h1>Portfolio</h1>
+		<p style="color: gray;">(curated list of some of my projects)</p>
 		<div id="portfolio-list">
 			<div>
 				for _, w := range(left) {
@@ -54,9 +54,10 @@ templ HomePage(relPath string, page types.Page, pages types.Pages, portfolio []t
 		<div id="about">
 			@templ.Raw(string(page.HTML))
 		</div>
+		<br/>
 		@FancyPortfolioView(leftColumn, rightColumn)
 		<div id="blogs">
-			<h2>Blogs</h2>
+			<h1>Blogs</h1>
 			for _, p := range pages {
 				<nav>
 					if strings.Contains(p.Url, "blogs") {

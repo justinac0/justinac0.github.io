@@ -135,7 +135,14 @@ func GenFromEmbedFS(mount embed.FS, base string) {
 
 	recursiveCachePage(mount, base, base, pages, styles)
 
+	// TODO(justin): import from elsewhere
 	var portfolio []types.Portfolio
+	portfolio = append(portfolio, types.Portfolio{
+		Title: "Extended WebView Bindings/Wrapper for Golang (gowv)",
+		About: "<span><b>gowv</b> is a</span> <a target='_blank' href='https://github.com/webview/webview'>WebView</a> <span>wrapper I wrote to fix some issues I had with the existing WebView Go bindings.</span>",
+		MdUrl: "./portfolio/gowv.html",
+		GithubUrl: "https://github.com/justinac0/gowv",
+	})
 	portfolio = append(portfolio, types.Portfolio{
 		ImageUrl:  "./static/img/collagen.gif",
 		MdUrl:     "./portfolio/diffuse.html",
@@ -148,7 +155,7 @@ func GenFromEmbedFS(mount embed.FS, base string) {
 		ImageUrl:  "./static/img/hackathon.png",
 		MdUrl:     "./portfolio/hook-line-sinker.html",
 		Title:     "Hackathon Educational Game",
-		About:     "<span>Hook Line Sinker is a retro fishing game with a focus on education, a retro re-imagining of a gamified future of education. Built for the</span> <a href='https://www.codenetwork.co/'>2025 Code Network Hackathon</a>",
+		About:     "<span>Hook Line Sinker is a retro fishing game with a focus on education, a retro re-imagining of a gamified future of education. Built for the</span> <a target='_blank' href='https://www.codenetwork.co/'>2025 Code Network Hackathon</a>",
 		GithubUrl: "https://github.com/justinac0/HookLineSinker",
 	})
 	portfolio = append(portfolio, types.Portfolio{
