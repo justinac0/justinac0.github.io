@@ -16,5 +16,5 @@ There where two main issues that I had with the official WebView go binding:
 ## Extra Notes
 At my current workplace I heavily use a Golang + WebView + HTMX stack for prototyping and also for creating production ready
 desktop applications that integrate with embedded systems.
-Using **gowv** simplifies solves the basic QoL issues I had with the offical WebView go bindings.
+Using **gowv** solves the basic QoL issues I had with the offical WebView go bindings.
 

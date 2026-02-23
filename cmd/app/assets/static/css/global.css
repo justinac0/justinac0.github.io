@@ -1,112 +1,120 @@
 :root {
-    --bg-color: #1a1a25;
-    --fg-color: #f3f3f3;
-    --t-color: #2a2a3a;
-    --s-color: #333345;
-    --link-color: cornflowerblue;
-    --border-radius: 8px;
+        --bg-color: #1a1a25;
+        --fg-color: #f3f3f3;
+        --t-color: #2a2a3a;
+        --s-color: #333345;
+        --link-color: cornflowerblue;
+        --border-radius: 8px;
 }
 
 html {
         box-sizing: border-box;
-        font-size: 1.25rem;
+        font-size: 1.05rem;
 }
 
-*, *:before, *:after { box-sizing: inherit; }
+*,
+*:before,
+*:after {
+        box-sizing: inherit;
+}
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
         font-family: sans-serif;
+}
+
+body {
+        padding: 1rem;
+        font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--fg-color);
+        line-height: 1.5;
+        margin: 0;
+}
+
+table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: var(--s-color);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+}
+
+thead {
+        background-color: var(--t-color);
+}
+
+th {
+        text-align: left;
+        padding: 0.75rem;
+        font-weight: 600;
+        color: var(--fg-color);
+}
+
+td {
+        color: var(--fg-color);
+        padding: 0.75em;
+}
+
+tbody tr {
+        border-top: 1px solid var(--t-color);
+}
+
+tbody tr:nth-child(even) {
+        background-color: #252535;
+}
+
+main {
+        max-width: 640px;
+        margin: 0 auto;
+}
+
+a {
+        color: var(--link-color);
+        text-decoration: none;
+        text-transform: uppercase;
+        inset: 0;
+}
+
+a>* {
+        text-decoration: inital;
+        text-transform: initial;
+        color: var(--fg-color);
+}
+
+img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+}
+
+pre {
+        /* TODO(justin): make this color a var :) */
+        background-color: #333345;
+        padding: 1rem;
+}
+
+blockquote {
+        font-style: italic;
+        margin: 0;
+        padding: 0;
+        color: gray;
+}
+
+ul {
         margin: 0;
         padding: 0;
 }
 
-body {
-    padding: 1rem;
-    font-family: "Noto Sans", Arial, Helvetica, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--fg-color);
-    line-height: 1.5;
-    margin: 0;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: var(--s-color);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-}
-
-thead {
-    background-color: var(--t-color);
-}
-
-th {
-    text-align: left;
-    padding: 0.75rem;
-    font-weight: 600;
-    color: var(--fg-color);
-}
-
-td {
-    color: var(--fg-color);
-    padding: 0.75em;
-}
-
-tbody tr {
-    border-top: 1px solid var(--t-color);
-}
-
-tbody tr:nth-child(even) {
-    background-color: #252535;
-}
-
-main {
-    max-width: 640px;
-    margin: 0 auto;
-}
-
-a {
-    color: var(--link-color);
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-a > * {
-    text-decoration: none;
-    text-transform: initial;
-    color: var(--fg-color);
-}
-
-img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
-}
-
-pre {
-    /* TODO(justin): make this color a var :) */
-    background-color: #333345;
-    padding: 1rem;
-}
-
-blockquote {
-    font-style: italic;
-    margin: 0;
-    padding: 0;
-    color: gray;
-}
-
-ul {
-    margin: 0;
-    padding: 0;
-}
-
 hr {
-    border: 0;
-    border-top: 1px;
-    border-style: solid;
-    border-color: gray;
+        border: 0;
+        border-top: 1px;
+        border-style: solid;
+        border-color: gray;
 }
 
 #about {
@@ -116,27 +124,42 @@ hr {
 }
 
 .portfolio-list {
-    text-align: left;
+        text-align: left;
 }
 
 .portfolio-item {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    background-color: var(--s-color);
-    border-radius: var(--border-radius);
-    margin-bottom: 1rem;
+        position: relative;
+        overflow: hidden;
+        background-color: var(--s-color);
+        border-radius: var(--border-radius);
+        margin-bottom: 1rem;
+}
+
+.portfolio-item:hover {
+        transform: translateY(-4px);
+        cursor: pointer;
+}
+
+.portfolio-item-info a {
+        position: relative;
+        z-index: 2;
 }
 
 .portfolio-item-info {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    padding: 1rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 1rem;
 }
 
 li {
-    margin-left: 1rem;
+        margin-left: 1rem;
 }
+
+.stretched-link {
+        position: absolute;
+        inset: 0;
+       z-index: 2;
+}
+

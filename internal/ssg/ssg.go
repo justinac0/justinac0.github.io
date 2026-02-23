@@ -138,8 +138,9 @@ func GenFromEmbedFS(mount embed.FS, base string) {
 	// TODO(justin): import from elsewhere
 	var portfolio []types.Portfolio
 	portfolio = append(portfolio, types.Portfolio{
+		ImageUrl: "./static/img/golang-gowv.png",
 		Title: "Extended WebView Bindings/Wrapper for Golang (gowv)",
-		About: "<span><b>gowv</b> is a</span> <a target='_blank' href='https://github.com/webview/webview'>WebView</a> <span>wrapper I wrote to fix some issues I had with the existing WebView Go bindings.</span>",
+		About: "<span><b>gowv</b> is a <a style='z-index: 5;' target='_blank' href='https://github.com/webview/webview'>WebView</a> wrapper I wrote to fix some issues I had with the existing WebView Go bindings.</span>",
 		MdUrl: "./portfolio/gowv.html",
 		GithubUrl: "https://github.com/justinac0/gowv",
 	})
@@ -150,12 +151,11 @@ func GenFromEmbedFS(mount embed.FS, base string) {
 		About:     "For my final year physics capstone I developed a Monte Carlo simulation of water diffision in articular cartilage. Data collected from these simulations can give insight into the morphology of cartilage fibers. The main simulation was written in python and real-time visualisations where written in C.",
 		GithubUrl: "https://github.com/justinac0/BulkWaterDiffuse",
 	})
-
 	portfolio = append(portfolio, types.Portfolio{
 		ImageUrl:  "./static/img/hackathon.png",
 		MdUrl:     "./portfolio/hook-line-sinker.html",
 		Title:     "Hackathon Educational Game",
-		About:     "<span>Hook Line Sinker is a retro fishing game with a focus on education, a retro re-imagining of a gamified future of education. Built for the</span> <a target='_blank' href='https://www.codenetwork.co/'>2025 Code Network Hackathon</a>",
+		About:     "<span>Hook Line Sinker is a retro fishing game with a focus on education, a retro re-imagining of a gamified future of education. Built for the <a style='z-index: 5;' target='_blank' href='https://www.codenetwork.co/'>2025 Code Network Hackathon</a></span>",
 		GithubUrl: "https://github.com/justinac0/HookLineSinker",
 	})
 	portfolio = append(portfolio, types.Portfolio{
