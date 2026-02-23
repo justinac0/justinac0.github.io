@@ -6,15 +6,14 @@ import (
 )
 
 templ PortfolioItem(item types.Portfolio) {
-	<div class="portfolio-item" style={ "position: relative;" }>
+	<div class="portfolio-item">
 		if len(item.ImageUrl) > 0 {
 			<img src={ item.ImageUrl }/>
 		}
 		<div class="portfolio-item-info">
 			<h3 style="margin: 0;">{ item.Title }</h3>
-			<p class="portfolio-item-about">
-				@templ.Raw(string(item.About))
-			</p>
+			@templ.Raw(item.About)
+			<br/>
 			<a style="z-index:100;" target="_blank" href={ item.GithubUrl }>github</a>
 		</div>
 	</div>

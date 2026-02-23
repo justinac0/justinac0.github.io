@@ -9,15 +9,13 @@
 
 html {
         box-sizing: border-box;
-        font-size: 1.25rem;
+        font-size: 1.05rem;
 }
 
 *, *:before, *:after { box-sizing: inherit; }
 
 h1, h2, h3, h4, h5, h6 {
         font-family: sans-serif;
-        margin: 0;
-        padding: 0;
 }
 
 body {
@@ -73,7 +71,7 @@ a {
 }
 
 a > * {
-    text-decoration: none;
+    text-decoration: inital;
     text-transform: initial;
     color: var(--fg-color);
 }
@@ -120,13 +118,17 @@ hr {
 }
 
 .portfolio-item {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     z-index: 100;
     background-color: var(--s-color);
     border-radius: var(--border-radius);
     margin-bottom: 1rem;
+}
+
+.portfolio-item:hover {
+    transform: scale(102%);
 }
 
 .portfolio-item-info {
