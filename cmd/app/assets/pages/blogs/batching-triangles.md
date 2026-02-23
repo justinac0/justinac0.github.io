@@ -1,6 +1,7 @@
 ---
 title: Batching Triangles OpenGL 
 author: Justin
+draft: true
 date: 2026-02-20
 ---
 

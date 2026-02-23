@@ -7,48 +7,43 @@ import (
 
 templ PortfolioItem(item types.Portfolio) {
 	<div class="portfolio-item" style={ "position: relative;" }>
-		<img src={ item.ImageUrl }/>
+		if len(item.ImageUrl) > 0 {
+			<img src={ item.ImageUrl }/>
+		}
 		<div class="portfolio-item-info">
-			<h3 style="margin-bottom: 0;">{ item.Title }</h3>
+			<h3 style="margin: 0;">{ item.Title }</h3>
 			<p class="portfolio-item-about">
-				{ item.About }
+				@templ.Raw(string(item.About))
 			</p>
-			<a target="_blank" href={ item.GithubUrl }>github</a>
+			<a style="z-index:100;" target="_blank" href={ item.GithubUrl }>github</a>
 		</div>
 	</div>
 }
 
-templ FancyPortfolioView(left []types.Portfolio, right []types.Portfolio) {
+templ FancyPortfolioView(items []types.Portfolio) {
 	<div id="portfolio">
-		<h2>Portfolio</h2>
-		<div id="portfolio-list">
-			<div>
-				for _, w := range(left) {
-					@PortfolioItem(w)
-				}
-			</div>
-			<div>
-				for _, w := range(right) {
-					@PortfolioItem(w)
-				}
-			</div>
+		<h1>Portfolio</h1>
+		<div class="portfolio-list">
+			for _, w := range(items) {
+				@PortfolioItem(w)
+			}
 		</div>
 	</div>
 }
 
 templ HomePage(relPath string, page types.Page, pages types.Pages, portfolio []types.Portfolio) {
-	{{ rightColumn := portfolio[len(portfolio)/2:] }}
-	{{ leftColumn := portfolio[:len(portfolio)/2] }}
 	@ArticleLayout(relPath, page.Meta.Title) {
 		<div id="about">
 			@templ.Raw(string(page.HTML))
 		</div>
-		@FancyPortfolioView(leftColumn, rightColumn)
+		<br/>
+		@FancyPortfolioView(portfolio)
 		<div id="blogs">
-			<h2>Blogs</h2>
+			<h1>Blogs</h1>
+			<p>WIP...</p>
 			for _, p := range pages {
 				<nav>
-					if strings.Contains(p.Url, "blogs") {
+					if strings.Contains(p.Url, "blogs") && p.Meta.Draft == false {
 						<ul>
 							<p>
 								<span style="color: gray"><i>{ p.Meta.Date }</i></span>

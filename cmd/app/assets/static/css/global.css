@@ -1,33 +1,87 @@
 :root {
     --bg-color: #1a1a25;
     --fg-color: #f3f3f3;
+    --t-color: #2a2a3a;
     --s-color: #333345;
-    --border-radius: 5px;
+    --link-color: cornflowerblue;
+    --border-radius: 8px;
 }
+
+html {
+        box-sizing: border-box;
+        font-size: 1.25rem;
+}
+
+*, *:before, *:after { box-sizing: inherit; }
+
+h1, h2, h3, h4, h5, h6 {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+}
+
 body {
+    padding: 1rem;
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;
     background-color: var(--bg-color);
     color: var(--fg-color);
-    line-height: 1.6;
-    padding: 0;
-    padding-bottom: 4rem;
+    line-height: 1.5;
     margin: 0;
-    margin-top: 6rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--s-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+thead {
+    background-color: var(--t-color);
+}
+
+th {
+    text-align: left;
+    padding: 0.75rem;
+    font-weight: 600;
+    color: var(--fg-color);
+}
+
+td {
+    color: var(--fg-color);
+    padding: 0.75em;
+}
+
+tbody tr {
+    border-top: 1px solid var(--t-color);
+}
+
+tbody tr:nth-child(even) {
+    background-color: #252535;
 }
 
 main {
-    max-width: 800px;
+    max-width: 640px;
     margin: 0 auto;
 }
 
 a {
-    color: cornflowerblue;
+    color: var(--link-color);
     text-decoration: none;
     text-transform: uppercase;
 }
+
+a > * {
+    text-decoration: none;
+    text-transform: initial;
+    color: var(--fg-color);
+}
+
 img {
     width: 100%;
     height: auto;
+    border-radius: var(--border-radius);
 }
 
 pre {
@@ -55,10 +109,14 @@ hr {
     border-color: gray;
 }
 
-#portfolio-list {
-    display: grid;
-    gap: 1ch;
-    grid-template-columns: 1fr 1fr;
+#about {
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        background-color: var(--s-color);
+}
+
+.portfolio-list {
+    text-align: left;
 }
 
 .portfolio-item {
@@ -66,22 +124,19 @@ hr {
     bottom: 0;
     left: 0;
     z-index: 100;
-    padding: 1ch;
+    background-color: var(--s-color);
     border-radius: var(--border-radius);
+    margin-bottom: 1rem;
 }
 
 .portfolio-item-info {
-    text-align: center;
+    padding: 1rem;
     display: flex;
-    width: 100%;
     flex-direction: column;
     flex-grow: 1;
-    backdrop-filter: blur(10px);
-    background-color: var(--s-color);
-    border-radius: var(--border-radius);
-    padding-bottom: 1ch;
+    padding: 1rem;
 }
 
-img {
-    border-radius: 5px;
+li {
+    margin-left: 1rem;
 }

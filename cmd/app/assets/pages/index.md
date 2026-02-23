@@ -3,17 +3,23 @@ title: Homepage
 author: Justin
 ---
 
-# Justin C. - Software Developer
+# Welcome! You're Justin Time!
 
-Hi! my name is Justin and I work in RnD electronics as a software developer.
+![...](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fartslife.com%2Fwp-content%2Fuploads%2F2019%2F09%2FF%25C3%25A9lix-Vallotton-Des-Sables-au-bord-de-la-Loire-1923.-%25C2%25A9-Kunsthaus-Z%25C3%25BCrich.jpg&f=1&nofb=1&ipt=5d0bb39f7cf86f1c253635faae4e83db56f3f6a3609377530203dbc2ead58cd8)
 
-This is my personal website; here you can explore some of the projects I have
-worked on or read random blogs I have written.
+Hi! I'm Justin, a software developer based in Brisbane who works
+in RnD (research and development) electronics dealing mainly with IoT and
+automated hardware testing.
 
 If you would like to contact me about hiring me as a developer for your company
 please contact me at *contact[dot]justinac[at]gmail[dot]com*
 
-![felix vallotton](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fuploads2.wikiart.org%2Fimages%2Ffelix-vallotton%2Fevening-on-the-loire-1923.jpg&f=1&nofb=1&ipt=dd3fbce30bed26a4ebdf9afcb5f0ffd260afcaed8e014ca7d95de9cd7b2ab14a "Félix Vallotton")
-> **[Random Fact About Me]** I love painted landscapes
+## Links
+<nav>
+<li>
+[CV](./resume/index.html)
+</li>
+<li>
+[Github](https://www.github.com/justinac0)
+</li>
 
-> (Painting by Félix Vallotton)
