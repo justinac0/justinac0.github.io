@@ -7,7 +7,9 @@ import (
 
 templ PortfolioItem(item types.Portfolio) {
 	<div class="portfolio-item" style={ "position: relative;" }>
-		<img src={ item.ImageUrl }/>
+		if len(item.ImageUrl) > 0 {
+			<img src={ item.ImageUrl }/>
+		}
 		<div class="portfolio-item-info">
 			<h3 style="margin: 0;">{ item.Title }</h3>
 			<p class="portfolio-item-about">
@@ -18,29 +20,18 @@ templ PortfolioItem(item types.Portfolio) {
 	</div>
 }
 
-templ PortfolioItemWrapper(item types.Portfolio) {
-	if len(item.MdUrl) > 0 {
-		<a href={ item.MdUrl }>
-			@PortfolioItem(item)
-		</a>
-	} else {
-		@PortfolioItem(item)
-	}
-}
-
 templ FancyPortfolioView(left []types.Portfolio, right []types.Portfolio) {
 	<div id="portfolio">
 		<h1>Portfolio</h1>
-		<p style="color: gray;">(curated list of some of my projects)</p>
 		<div id="portfolio-list">
 			<div>
 				for _, w := range(left) {
-					@PortfolioItemWrapper(w)
+					@PortfolioItem(w)
 				}
 			</div>
 			<div>
 				for _, w := range(right) {
-					@PortfolioItemWrapper(w)
+					@PortfolioItem(w)
 				}
 			</div>
 		</div>
