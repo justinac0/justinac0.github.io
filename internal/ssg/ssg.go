@@ -138,10 +138,10 @@ func GenFromEmbedFS(mount embed.FS, base string) {
 	// TODO(justin): import from elsewhere
 	var portfolio []types.Portfolio
 	portfolio = append(portfolio, types.Portfolio{
-		ImageUrl: "./static/img/golang-gowv.png",
-		Title: "Extended WebView Bindings/Wrapper for Golang (gowv)",
-		About: "<span><b>gowv</b> is a <a style='z-index: 5;' target='_blank' href='https://github.com/webview/webview'>WebView</a> wrapper I wrote to fix some issues I had with the existing WebView Go bindings.</span>",
-		MdUrl: "./portfolio/gowv.html",
+		ImageUrl:  "./static/img/golang-gowv.png",
+		Title:     "Extended WebView Bindings/Wrapper for Golang (gowv)",
+		About:     "<span><b>gowv</b> is a <a style='z-index: 5;' target='_blank' href='https://github.com/webview/webview'>WebView</a> wrapper I wrote to fix some issues I had with the existing WebView Go bindings.</span>",
+		MdUrl:     "./portfolio/gowv.html",
 		GithubUrl: "https://github.com/justinac0/gowv",
 	})
 	portfolio = append(portfolio, types.Portfolio{
