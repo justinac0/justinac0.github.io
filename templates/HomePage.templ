@@ -17,7 +17,7 @@ templ PortfolioItem(item types.Portfolio) {
 		if len(item.MdUrl) > 0 {
 			<a href={ item.MdUrl } class="stretched-link"></a>
 		}
-                <div class="portfolio-dim"/>
+		<div class="portfolio-dim"></div>
 	</div>
 }
 
@@ -39,24 +39,26 @@ templ HomePage(relPath string, page types.Page, pages types.Pages, portfolio []t
 		</div>
 		<br/>
 		@FancyPortfolioView(portfolio)
-		<div id="blogs">
-			<h1>Blogs</h1>
-			for _, p := range pages {
-				<nav>
-					if strings.Contains(p.Url, "blogs") {
-						<ul>
-							<p>
-								<span style="color: gray"><i>{ p.Meta.Date }</i></span>
-								if len(relPath) > 0 {
-									{ " " }<a href={ p.Url }>{ p.Meta.Title }</a>
-								} else {
-									{ " " }<a href={ p.Url + ".html" }>{ p.Meta.Title }</a>
-								}
-							</p>
-						</ul>
-					}
-				</nav>
-			}
-		</div>
+		if types.HasBlogs(pages) {
+			<div id="blogs">
+				<h1>Blogs</h1>
+				for _, p := range pages {
+					<nav>
+						if strings.Contains(p.Url, "blogs") {
+							<ul>
+								<p>
+									<span style="color: gray"><i>{ p.Meta.Date }</i></span>
+									if len(relPath) > 0 {
+										{ " " }<a href={ p.Url }>{ p.Meta.Title }</a>
+									} else {
+										{ " " }<a href={ p.Url + ".html" }>{ p.Meta.Title }</a>
+									}
+								</p>
+							</ul>
+						}
+					</nav>
+				}
+			</div>
+		}
 	}
 }

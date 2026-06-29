@@ -1,5 +1,7 @@
 package types
 
+import "strings"
+
 // TODO(justin): rename to blog***
 type PageMeta struct {
 	Title  string `yaml:title`
@@ -22,3 +24,13 @@ type Style struct {
 
 type Styles map[string]Style
 type Pages map[string]Page
+
+func HasBlogs(pages Pages) bool {
+	for _, p := range pages {
+		if p.Meta.Draft == false && strings.Contains(p.Url, "blogs") {
+			return true
+		}
+	}
+
+	return false
+}
